@@ -1,0 +1,21 @@
+<h1 class="text-center">Список постов</h1>
+<p class="text-center"><%= link_to 'новый пост', new_article_path, 'data-no-turbolink' => true %> | <%= link_to 'на главную', root_path %></p>
+  <table class="table table-striped">
+    <tr class="success">
+      <th class="center">Создан</th>
+      <th class="center">Название</th>
+      <th class="center">Текст</th>
+      <th class="center" colspan="3">Управление</th>
+    </tr>
+    <% @articles.each do |article| %>
+      <tr>
+        <td width="90px"><%= article.updated_at.strftime '%Y-%m-%d %H:%M:%S' %></td>
+        <td width="180px"><%= truncate(article.title, length: 40) %></td>
+        <td><%= truncate(article.text, length: 100) %></td>
+        <td width="70px"><%= link_to 'показать', article_path(article) %></td>
+        <td width="70px"><%= link_to 'изменить', edit_article_path(article), 'data-no-turbolink' => true %></td>
+        <td width="70px"><%= link_to 'удалить', article_path(article), method: :delete, data: {confirm: 'Серьезно?'} %></td>
+      </tr>
+    <% end %>
+  </table>
+<!-- В комірках (`td` або `th`) -->

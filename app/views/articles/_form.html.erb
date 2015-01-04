@@ -1,0 +1,25 @@
+<%= form_for @article do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited:</h2>
+        <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label 'Название' %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label 'Текст' %><br>
+    <%= tinymce_assets %>
+    <%= tinymce %>
+    <%= f.text_area :text, class: 'tinymce', size: "10x10" %>
+  </p>
+  <p>
+    <%= f.submit 'сохранить', class: "btn btn-primary" %>
+  </p>
+<% end %>

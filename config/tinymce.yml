@@ -1,0 +1,10 @@
+toolbar:
+  - styleselect | bold italic | alignleft aligncenter alignright alignjustify | undo redo | forecolor backcolor | fontsizeselect | removeformat
+plugins:
+  - image
+  - link
+  - table
+  - charmap
+  - textcolor
+  - hr
+  - code
