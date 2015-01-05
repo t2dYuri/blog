@@ -1,10 +1,7 @@
 <h1 class="text-center"><%= @article.title %> <small><%= @article.updated_at.strftime '%Y-%m-%d / %H:%M:%S' %></small></h1>
 <p><%= @article.text.html_safe %></p>
 <hr>
-<%= link_to 'редактировать пост', edit_article_path(@article) %> |
-<%= link_to 'назад к списку', articles_path %> |
-<%= link_to 'удалить', article_path(@article), method: :delete, data: {confirm: 'Серьезно?'} %>
-<hr>
+
 <h3>Все комментарии</h3>
 <%= render @article.comments %>
 
@@ -15,6 +12,6 @@
   <div class="text-center">
     <%= link_to 'редактировать статью', edit_article_path(@article), 'data-no-turbolink' => true %> |
     <%= link_to 'удалить эту статью', article_path(@article), method: :delete, data: {confirm: 'Серьезно?'} %> |
-    <%= link_to 'обратно к списку', articles_path %>
+    <%= link_to 'обратно к списку', articles_path %> |
   </div>
 </nav>

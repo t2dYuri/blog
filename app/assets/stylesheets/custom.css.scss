@@ -1,13 +1,13 @@
 @import "bootstrap";
+
+/* whole document*/
 body {
-  /*background-color: black;*/
   background-image: asset-url("s5_background3.jpg");
 }
-.form-control {
-  width: 500px;
-}
 .container-fluid {
+  padding-bottom: 10px;
   margin-top: 30px;
+  margin-bottom: 20px;
   background-color: white;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -15,9 +15,18 @@ body {
   max-width: 1400px;
 }
 p {
-  /* font-size: 1.1em;*/
   line-height: 1em;
 }
+.bg-primary {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.form-control {
+  width: 500px;
+}
+
+/* Navbars */
 .navbar-fixed-bottom, .navbar-fixed-top {
   background: rgba(0, 0, 0, 0.5);
   a:link, a:visited, a:hover, a:focus, a:active {
@@ -25,8 +34,41 @@ p {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
   }
 }
-.bg-primary {
+
+/*Scroll to top button */
+.scroll-to-top {
+  display: none;
+  position: fixed; bottom: 30px; right: 30px;
+  width: 70px;
+  height: 40px;
+  padding-top: 10px;
+  background-color: rgba(180, 180, 180, 0.3);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
+  box-shadow: 3px 3px 7px #333;
+  text-align:center;
+  a:link, a:visited, a:hover, a:focus, a:active {
+    font: bold 0.9em/1.2em Arial, Helvetica, sans-sherif;
+    color: #ddd;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}
+.scroll-to-top:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Article Index */
+.li-zebra {
+  padding: 5px 10px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border-bottom: solid;
+  border-color: #337AB7;
+}
+.btn-artlist {
+  width: 70px;
 }
