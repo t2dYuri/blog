@@ -8,7 +8,8 @@ body {
   padding-bottom: 10px;
   margin-top: 30px;
   margin-bottom: 20px;
-  background-color: white;
+  /*background-color: white;*/
+  background: rgba(255, 255, 255, 0.7);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -17,13 +18,30 @@ body {
 p {
   line-height: 1em;
 }
+.g-block {
+  padding: 5px;
+  background-color: #EEEEEE;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.t-block {
+  padding: 5px;
+  background-color: #fafafa;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
 .bg-primary {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
-.form-control {
-  width: 500px;
+.page-header {
+  margin: 10px;
+}
+textarea {
+  resize: vertical;
 }
 
 /* Navbars */
@@ -71,4 +89,21 @@ p {
 }
 .btn-artlist {
   width: 70px;
+}
+/* comments */
+.panel-top {
+  margin-top: 18px;
+}
+.panel {
+  background: rgba(255, 255, 255, 0.8);
+}
+.li-comm {
+  background-color: #FFFFFF;
+  padding: 5px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  /*border-bottom: solid;*/
+  border-top: solid;
+  border-color: #337AB7;
 }

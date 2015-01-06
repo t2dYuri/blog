@@ -1,12 +1,30 @@
-<h1 class="text-center"><%= @article.title %> <small><%= @article.updated_at.strftime '%Y-%m-%d / %H:%M:%S' %></small></h1>
-<p><%= @article.text.html_safe %></p>
-<hr>
-
-<h3>Все комментарии</h3>
-<%= render @article.comments %>
-
-<h3>Добавить комментарий:</h3>
-<%= render 'comments/form' %>
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="text-center"><%= @article.title %> <small><%= @article.updated_at.strftime '%Y-%m-%d / %H:%M:%S' %></small></h1>
+    <h5 class="t-block"><%= @article.description.html_safe %></h5>
+    <div class="t-block">
+      <%= @article.text.html_safe %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-primary panel-top">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Комментарии</h2>
+      </div>
+      <div class="panel-body">
+        <%= render @article.comments.order('updated_at DESC') %>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Добавить комментарий</h2>
+      </div>
+      <div class="panel-body">
+        <%= render 'comments/form' %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <nav class="navbar-fixed-bottom" role="navigation">
   <div class="text-center">

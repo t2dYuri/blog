@@ -13,10 +13,14 @@
     <%= f.label 'Название' %><br>
     <%= f.text_field :title, class: "form-control" %>
   </p>
+    <p>
+      <%= f.label 'Описание' %><small> (Не более 220 символов)</small><br>
+      <%= tinymce_assets %>
+      <%= tinymce %>
+      <%= f.text_area :description, class: 'form-control', size: "10x5" %>
+    </p>
   <p>
     <%= f.label 'Текст' %><br>
-    <%= tinymce_assets %>
-    <%= tinymce %>
     <%= f.text_area :text, class: 'tinymce', size: "10x10" %>
   </p>
   <p>

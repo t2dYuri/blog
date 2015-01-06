@@ -1,6 +1,9 @@
-<div class="container1">
-<p><strong>От: </strong><%= comment.commenter %>, <small><em><%= comment.created_at.strftime '%Y-%m-%d в %H:%M:%S' %></em></small></p>
-<p><strong>Комментарий: </strong><%= comment.body %></p>
-</div>
-<p><%= link_to 'удалить комментарий', [comment.article, comment], method: :delete, data: {confirm: 'Серьезно?'}, class: "btn btn-primary btn-xs" %></p>
-<br>
+<ul class="list-unstyled">
+  <li class="li-comm">
+    <em><small><%= comment.created_at.strftime '%Y-%m-%d в %H:%M:%S' %></small></em>
+    <%= link_to 'удалить', ([comment.article, comment]), method: :delete, data: {confirm: 'Серьезно?'}, class: 'btn btn-primary btn-xs pull-right' %>
+    <br>
+    <strong><%= comment.commenter %>:</strong>
+    <%= comment.body %>
+  </li>
+</ul>
