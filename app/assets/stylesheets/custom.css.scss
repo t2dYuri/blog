@@ -1,6 +1,6 @@
 @import "bootstrap";
 
-/* whole document*/
+/* --- Whole Project --- */
 body {
   background-image: asset-url("s5_background3.jpg");
 }
@@ -44,16 +44,7 @@ textarea {
   resize: vertical;
 }
 
-/* Navbars */
-.navbar-fixed-bottom, .navbar-fixed-top {
-  background: rgba(0, 0, 0, 0.5);
-  a:link, a:visited, a:hover, a:focus, a:active {
-    color: #e3e3e3;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
-  }
-}
-
-/*Scroll to top button */
+/* --- Scroll to top button --- */
 .scroll-to-top {
   display: none;
   position: fixed; bottom: 30px; right: 30px;
@@ -78,7 +69,16 @@ textarea {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Article Index */
+/* --- Navbars --- */
+.navbar-fixed-bottom, .navbar-fixed-top {
+  background: rgba(0, 0, 0, 0.5);
+  a:link, a:visited, a:hover, a:focus, a:active {
+    color: #e3e3e3;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+  }
+}
+
+/* --- Article Index --- */
 .li-zebra {
   padding: 5px 10px;
   -webkit-border-radius: 6px;
@@ -90,7 +90,28 @@ textarea {
 .btn-artlist {
   width: 70px;
 }
-/* comments */
+
+/* --- Article Show --- */
+.prev-next {
+  padding: 3px 5px 5px;
+  background-color: rgba(180, 180, 180, 0.3);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 7px #333;
+  text-align:center;
+  a:link, a:visited, a:hover, a:focus, a:active {
+    font: bold 0.9em/1.2em Arial, Helvetica, sans-sherif;
+    color: #ddd;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+    text-decoration: none;
+  }
+}
+.prev-next:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* --- comments --- */
 .panel-top {
   margin-top: 18px;
 }
