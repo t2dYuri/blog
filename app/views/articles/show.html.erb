@@ -3,7 +3,7 @@
   <div class="col-md-8">
     <h1 class="text-center"><%= @article.title %> <small><%= @article.updated_at.strftime '%Y-%m-%d / %H:%M:%S' %></small></h1>
     <h5 class="t-block"><%= @article.description.html_safe %></h5>
-    <div class="t-block">
+    <div id="spot" class="t-block">
       <%= @article.text.html_safe %>
     </div>
     <h4>
