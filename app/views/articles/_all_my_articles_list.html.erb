@@ -1,0 +1,33 @@
+<h1 class="text-center bg-primary">Все мои статьи</h1>
+<ul class="list-unstyled">
+  <% @articles.order('updated_at DESC').each do |article| %>
+      <% zebra = cycle('#F3F3F3', '#FFFFFF') %>
+      <li class="li-zebra" style="background: <%= zebra %>">
+        <h4>
+          <%= link_to truncate(article.title, length: 50), article_path(article) %>
+          <small>
+            <em><%= article.updated_at.strftime '%Y-%m-%d / %X' %></em>
+          </small>
+          <!--<span class="pull-right btn-group">-->
+            <%#= link_to 'показать', article_path(article), class: 'btn btn-default btn-xs btn-artlist' %>
+            <%#= link_to 'изменить', edit_article_path(article), 'data-no-turbolink' => true, class: 'btn btn-default btn-xs btn-artlist' %>
+            <%#= link_to 'удалить', article_path(article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'btn btn-default btn-xs btn-artlist' %>
+          <!--</span>-->
+          <span class="pull-right">
+            <%= link_to article_path(article), class: 'show-but' do %>
+                <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Читать статью"></i>
+            <% end %>
+            <%= link_to edit_article_path(article), 'data-no-turbolink' => true, class: 'edit-but' do %>
+                <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать статью"></i>
+            <% end %>
+            <%= link_to article_path(article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but' do %>
+                <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить статью"></i>
+            <% end %>
+          </span>
+        </h4>
+        <span>
+          <%= truncate(strip_tags(article.description), length: 220) %>
+        </span>
+      </li>
+  <% end %>
+</ul>

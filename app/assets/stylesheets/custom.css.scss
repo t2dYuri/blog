@@ -5,6 +5,9 @@
 body {
   background-image: asset-url("s5_background3.jpg");
 }
+a:link, a:visited, a:hover, a:focus, a:active {
+  outline: none;
+}
 h1, h2, h3, h4, h5, h6, p {
   line-height: 1;
 }
@@ -53,6 +56,25 @@ section {
 }
 .center {
   text-align: center;
+}
+/* --- Control Buttons --- */
+.show-but {
+  margin: 0 0 0 5px;
+  :hover, :active, :focus {
+    color: #00b923;
+  }
+}
+.edit-but {
+  margin: 0 0 0 5px;
+  :hover, :active, :focus {
+    color: #caa000;
+  }
+}
+.del-but {
+  margin: 0 0 0 5px;
+  :hover, :active, :focus {
+    color: #cf0032;
+  }
 }
 
 /* --- Block-Shadows --- */
@@ -137,9 +159,9 @@ section {
   border-bottom: solid;
   border-color: #337AB7;
 }
-.btn-artlist {
+/*.btn-artlist {
   width: 70px;
-}
+}*/
 
 /* --- Article Show --- */
 .prev-next {
@@ -170,6 +192,7 @@ section {
 }
 .li-comm {
   background-color: #FFFFFF;
+  margin-bottom: 5px;
   padding: 5px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;

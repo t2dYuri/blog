@@ -23,8 +23,10 @@
         <h2 class="panel-title text-center">Комментарии</h2>
       </div>
       <div class="panel-body">
+        <ul class="list-unstyled">
         <%= render html: '<strong>Пока что никто не комментировал эту статью</strong>'.html_safe unless @article.comments.count  > 0 %>
         <%= render @article.comments.order('updated_at DESC') %>
+        </ul>
       </div>
     </div>
     <div class="panel panel-primary">

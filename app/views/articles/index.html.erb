@@ -1,4 +1,4 @@
-<% provide(:title, "Все статьи") %>
+<% provide(:title, 'Все статьи') %>
 <div class="row">
   <aside class="col-md-4">
     <section>
@@ -9,27 +9,6 @@
     </section>
   </aside>
   <div class="col-md-8">
-    <h1 class="text-center bg-primary">Все мои статьи</h1>
-    <ul class="list-unstyled">
-      <% @articles.order('updated_at DESC').each do |article| %>
-      <% zebra = cycle('#F3F3F3', '#FFFFFF') %>
-        <li class="li-zebra" style="background: <%= zebra %>">
-          <h4>
-            <%= truncate(article.title, length: 50) %>
-            <small>
-              <em><%= article.updated_at.strftime '%Y-%m-%d / %X' %></em>
-            </small>
-            <span class="pull-right btn-group">
-              <%= link_to 'показать', article_path(article), class: 'btn btn-default btn-xs btn-artlist' %>
-              <%= link_to 'изменить', edit_article_path(article), 'data-no-turbolink' => true, class: 'btn btn-default btn-xs btn-artlist' %>
-              <%= link_to 'удалить', article_path(article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'btn btn-default btn-xs btn-artlist' %>
-            </span>
-          </h4>
-          <span>
-            <%= truncate(strip_tags(article.description), length: 220) %>
-          </span>
-        </li>
-      <% end %>
-    </ul>
+    <%= render 'all_my_articles_list' %>
   </div>
 </div>
