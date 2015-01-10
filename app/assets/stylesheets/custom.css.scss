@@ -114,6 +114,18 @@ section {
   margin-left: 10px;
   margin-top: 5px;
 }
+.dropdown-menu {
+  background: rgba(0, 0, 0, 0.5);
+  a:link, a:visited, a:hover, a:focus, a:active {
+    color: #e3e3e3;
+  }
+  .divider {
+    background-color: #000000;
+  }
+  > li > a:hover, a:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
 
 /* --- Article Index --- */
 .li-zebra {
