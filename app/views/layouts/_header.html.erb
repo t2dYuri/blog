@@ -1,0 +1,31 @@
+<header class="navbar-fixed-top navbar-inverse">
+  <span class="pull-left nav-logo img-rounded"><%= link_to image_tag('blogg.png', height: '50', width: '50'), root_path %></span>
+  <span class="pull-right nav-time"><%= Time.now.strftime '%d.%m.%Y' %></span>
+  <div class="center">
+    <%= link_to root_path, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-home"></i> Главная
+    <% end %>
+    <div class="btn-group">
+      <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-info-sign"></i> Инфо <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Помощь', help_path %></li>
+        <li><%= link_to 'О проекте', about_path %></li>
+        <li><%= link_to 'Обратная связь', contact_path %></li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-book"></i> Статьи <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Все мои статьи', articles_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Написать статью', new_article_path, 'data-no-turbolink' => true %></li>
+      </ul>
+    </div>
+    <%= link_to '#', class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-user"></i> Вход
+    <% end %>
+    <%= link_to signup_path, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-star"></i> Регистрация
+    <% end %>
+  </div>
+</header>

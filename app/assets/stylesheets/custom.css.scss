@@ -1,6 +1,4 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
+@import "bootstrap-sprockets", "bootstrap";
 /* --- Whole Project --- */
 body {
   background-image: asset-url("s5_background3.jpg");
@@ -21,35 +19,26 @@ textarea {
 section {
   overflow: auto;
 }
+.bg-primary, .container-fluid, .t-block, .scroll-to-top, .li-zebra, .prev-next, .li-comm {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.t-block, .panel, .li-zebra, .bg-primary, .jumbotron, .li-comm, .form-control {
+  -moz-box-shadow: 0 0 7px #777;
+  -webkit-box-shadow: 0 0 7px #777;
+  box-shadow: 0 0 7px #777;
+}
 .container-fluid {
   padding-bottom: 10px;
   margin-top: 50px;
   margin-bottom: 20px;
-  /*background-color: white;*/
   background: rgba(255, 255, 255, 0.7);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   max-width: 1400px;
-}
-.g-block {
-  padding: 5px;
-  background-color: #EEEEEE;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
 }
 .t-block {
   padding: 5px;
   background-color: #fafafa;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.bg-primary {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
 }
 .page-header {
   margin: 10px;
@@ -76,14 +65,6 @@ section {
     color: #cf0032;
   }
 }
-
-/* --- Block-Shadows --- */
-.t-block, .panel, /*.btn,*/ .li-zebra, .bg-primary, .jumbotron, .li-comm, .form-control {
-  -moz-box-shadow: 0 0 7px #777;
-  -webkit-box-shadow: 0 0 7px #777;
-  box-shadow: 0 0 7px #777;
-}
-
 /* --- Scroll to top button --- */
 .scroll-to-top {
   display: none;
@@ -93,12 +74,8 @@ section {
   padding-top: 5px;
   padding-right: 5px;
   background-color: rgba(180, 180, 180, 0.3);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   box-shadow: 0 0 7px #333;
   a:link, a:visited, a:hover, a:focus, a:active {
-    /*font: bold 0.9em/1.2em Arial, Helvetica, sans-sherif;*/
     color: rgba(220, 220, 220, 1.0);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 1.0);
     text-decoration: none;
@@ -107,19 +84,18 @@ section {
 .scroll-to-top:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
-
 /* --- Navbars --- */
 .navbar-fixed-top {
   background: rgba(0, 0, 0, 0.5);
   max-height: 40px;
 }
 .nav-but {
-  color: #BBBBBB;
+  color: #bbb;
   border: none;
   margin: 4px;
-}
-.nav-but:hover, .nav-but:active, .nav-but:focus, {
-  color: white;
+  &:hover, &:active, &:focus {
+    color: white;
+  }
 }
 .navbar-fixed-bottom {
   background: rgba(0, 0, 0, 0.5);
@@ -137,39 +113,30 @@ section {
   margin-top: 5px;
 }
 .dropdown-menu {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   a:link, a:visited, a:hover, a:focus, a:active {
-    color: #e3e3e3;
+    color: #ccc;
   }
   .divider {
-    background-color: #000000;
+    background-color: black;
   }
   > li > a:hover, a:focus {
-    background-color: rgba(255, 255, 255, 0.5);
+    background: none;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
   }
 }
-
 /* --- Article Index --- */
 .li-zebra {
   margin-top: 5px;
   padding: 5px 10px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   border-bottom: solid;
   border-color: #337AB7;
 }
-/*.btn-artlist {
-  width: 70px;
-}*/
-
 /* --- Article Show --- */
 .prev-next {
   padding: 3px 5px 5px;
   background-color: rgba(180, 180, 180, 0.3);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   box-shadow: 2px 2px 7px #333;
   text-align:center;
   a:link, a:visited, a:hover, a:focus, a:active {
@@ -182,8 +149,7 @@ section {
 .prev-next:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
-
-/* --- comments --- */
+/* --- Comments --- */
 .panel-top {
   margin-top: 18px;
 }
@@ -191,16 +157,10 @@ section {
   background: rgba(255, 255, 255, 0.8);
 }
 .li-comm {
-  background-color: #FFFFFF;
+  background-color: white;
   margin-bottom: 5px;
   padding: 5px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   border-bottom: solid;
-  /*border-top: solid;*/
   border-color: #337AB7;
 }
-
 /* --- TESTING --- */
-

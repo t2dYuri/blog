@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+
   resources :articles do
     resources :comments
   end
   root 'welcome#index'
-  get 'welcome/help'
   get 'help' => 'welcome#help'
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'
+  get 'signup' => 'users#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
