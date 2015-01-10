@@ -17,7 +17,7 @@
           <h4>
             <%= truncate(article.title, length: 50) %>
             <small>
-              <em><%= article.updated_at.strftime '%Y-%m-%d / %H:%M:%S' %></em>
+              <em><%= article.updated_at.strftime '%Y-%m-%d / %X' %></em>
             </small>
             <span class="pull-right btn-group">
               <%= link_to 'показать', article_path(article), class: 'btn btn-default btn-xs btn-artlist' %>

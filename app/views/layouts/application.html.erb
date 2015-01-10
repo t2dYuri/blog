@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) %> | BloGG</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= render 'layouts/shim' %>
 </head>
+
 <body>
-<nav class="navbar-fixed-top" role="navigation">
-  <div class="text-center">
-    <%= link_to 'главная страница', root_path %> |
-    <%= link_to 'написать статью', new_article_path, 'data-no-turbolink' => true %> |
-    <%= link_to 'все мои статьи', controller: 'articles' %>
+  <header class="navbar-fixed-top navbar-inverse">
+    <span class="pull-left nav-logo img-rounded"><%= link_to image_tag('blogg.png', height: '50', width: '50'), root_path %></span>
+    <span class="pull-right nav-time"><%= Time.now.strftime '%d.%m.%Y' %></span>
+    <div class="center">
+      <%= link_to root_path, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-home"></i> Главная
+      <% end %>
+      <%= link_to help_path, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-info-sign"></i> Помощь
+      <% end %>
+      <div class="btn-group">
+        <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-book"></i> Статьи <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Все мои статьи', articles_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Написать статью', new_article_path, 'data-no-turbolink' => true %></li>
+        </ul>
+      </div>
+      <%= link_to '#', class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-user"></i> Вход
+      <% end %>
     </div>
-</nav>
-<div class="container-fluid">
-<%= yield %>
-</div>
-<div class="scroll-to-top">
-  <%= link_to 'Вверх', anchor: 'top' %>
-</div>
+  </header>
+
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
+  <h1 class="scroll-to-top">
+    <%= link_to anchor: 'top' do %>
+        <i class="glyphicon glyphicon-arrow-up"></i>
+    <% end %>
+  </h1>
 </body>
 </html>
