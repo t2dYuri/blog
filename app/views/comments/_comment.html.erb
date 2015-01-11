@@ -1,8 +1,9 @@
 <li class="li-comm">
   <em><small><%= comment.created_at.strftime '%d-%m-%Y в %X' %></small></em>
   <%#= link_to ([comment.article, comment]), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but pull-right' do %>
-      <!--<i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить этот комментарий"></i>-->
-  <%# end %>
+  <%= link_to article_comment_path(comment.article.id,comment.id), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but pull-right' do %>
+      <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить комментарий"></i>
+  <% end %>
   <br>
   <strong><%= comment.commenter %>:</strong>
   <%= comment.body %>
