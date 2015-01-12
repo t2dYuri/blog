@@ -1,10 +1,22 @@
 @import "bootstrap-sprockets", "bootstrap";
-/* --- Whole Project --- */
-body {
-  background-image: asset-url("s5_background3.jpg");
-}
+$dark-blue: #135b8f;
+
 a:link, a:visited, a:hover, a:focus, a:active, .btn:focus, .btn:focus:active, .active.btn:focus {
   outline: none;
+  color: $dark-blue;
+}
+.bg-primary, .container-fluid, .t-block, .scroll-to-top, .li-zebra, .prev-next, .li-comm, {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.t-block, .panel, .li-zebra, .bg-primary, .jumbotron, .li-comm, .form-control {
+  -moz-box-shadow: 0 0 5px #003a5b;
+  -webkit-box-shadow: 0 0 5px #003a5b;
+  box-shadow: 0 0 5px #003a5b;
+}
+body {
+  background-image: asset-url("s5_background3.jpg");
 }
 h1, h2, h3, h4, h5, h6, p {
   line-height: 1;
@@ -13,56 +25,52 @@ h1, h2 {
   letter-spacing: -1px;
   text-align: center;
 }
+h2 {
+  margin-top: 10px;
+}
 textarea {
   resize: vertical;
 }
 section {
   overflow: auto;
 }
-.bg-primary, .container-fluid, .t-block, .scroll-to-top, .li-zebra, .prev-next, .li-comm {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.t-block, .panel, .li-zebra, .bg-primary, .jumbotron, .li-comm, .form-control {
-  -moz-box-shadow: 0 0 7px #777;
-  -webkit-box-shadow: 0 0 7px #777;
-  box-shadow: 0 0 7px #777;
-}
+
 .container-fluid {
   padding-bottom: 10px;
   margin-top: 50px;
   margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.5);
   max-width: 1400px;
 }
 .t-block {
   padding: 5px;
   background-color: #fafafa;
 }
-.page-header {
-  margin: 10px;
-}
 .center {
   text-align: center;
+}
+.bg-primary {
+  padding: 5px;
+  background: rgba(0,0,0,0.4);
+  color: #ddd;
 }
 /* --- Control Buttons --- */
 .show-but {
   margin: 0 0 0 5px;
   :hover, :active, :focus {
-    color: #00b923;
+    color: #04cb3a;
   }
 }
 .edit-but {
   margin: 0 0 0 5px;
   :hover, :active, :focus {
-    color: #caa000;
+    color: #ffc700;
   }
 }
 .del-but {
   margin: 0 0 0 5px;
   :hover, :active, :focus {
-    color: #cf0032;
+    color: #dd0000;
   }
 }
 /* --- Scroll to top button --- */
@@ -89,7 +97,7 @@ section {
   background: rgba(0, 0, 0, 0.5);
   max-height: 40px;
 }
-.nav-but {
+.nav-but, .nav-but:link, .nav-but:visited {
   color: #bbb;
   border: none;
   margin: 4px;
@@ -131,7 +139,7 @@ section {
   margin-top: 5px;
   padding: 5px 10px;
   border-bottom: solid;
-  border-color: #337AB7;
+  border-color: $dark-blue;
 }
 /* --- Article Show --- */
 .prev-next {
@@ -155,12 +163,21 @@ section {
 }
 .panel {
   background: rgba(255, 255, 255, 0.8);
+  border: none;
+}
+.panel-heading {
+  border-bottom: 1px solid #aaa;
+  background: rgba(0, 0, 0, 0.1);
+}
+.panel-title {
+  font-weight: bold;
+  color: $dark-blue;
+  text-align: center;
 }
 .li-comm {
   background-color: white;
   margin-bottom: 5px;
   padding: 5px;
-  border-bottom: solid;
-  border-color: #337AB7;
+  border-bottom: solid $dark-blue;
 }
 /* --- TESTING --- */

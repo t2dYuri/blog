@@ -1,9 +1,8 @@
 <div class="row">
 
   <div class="col-md-8">
-    <span class="pull-left">последнее обновление: <strong><%= @article.updated_at.strftime '%d-%m-%Y в %X' %></strong></span>
+    <small class="float-left">последнее обновление: <strong><%= @article.updated_at.strftime '%d-%m-%Y в %X' %></strong></small>
     <h2 class="text-center"><%= @article.title %></h2>
-
     <h5 class="t-block"><%= @article.description.html_safe %></h5>
     <div id="spot" class="t-block">
       <%= @article.text.html_safe %>
@@ -20,9 +19,9 @@
   </div>
 
   <div class="col-md-4">
-    <div class="panel panel-primary panel-top">
+    <div class="panel panel-top">
       <div class="panel-heading">
-        <h2 class="panel-title text-center">Комментарии</h2>
+        <h3 class="panel-title">Комментарии</h3>
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
@@ -31,9 +30,9 @@
         </ul>
       </div>
     </div>
-    <div class="panel panel-primary">
+    <div class="panel">
       <div class="panel-heading">
-        <h2 class="panel-title text-center">Добавить комментарий</h2>
+        <h3 class="panel-title">Добавить комментарий</h3>
       </div>
       <div class="panel-body">
         <%= render 'comments/form' %>
