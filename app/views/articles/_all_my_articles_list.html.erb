@@ -4,7 +4,7 @@
       <% zebra = cycle('#F3F3F3', '#FFFFFF') %>
       <li class="li-zebra" style="background: <%= zebra %>">
         <h4>
-          <%= link_to truncate(article.title, length: 50), article_path(article) %>
+          <%= link_to truncate(article.title, length: 60), article_path(article) %>
           <small>
             <em><%= article.updated_at.strftime '%d-%m-%Y в %X' %></em>
           </small>

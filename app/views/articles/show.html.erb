@@ -1,7 +1,9 @@
 <div class="row">
 
   <div class="col-md-8">
-    <h1 class="text-center"><%= @article.title %> <small><%= @article.updated_at.strftime '%d-%m-%Y в %X' %></small></h1>
+    <span class="pull-left">последнее обновление: <strong><%= @article.updated_at.strftime '%d-%m-%Y в %X' %></strong></span>
+    <h2 class="text-center"><%= @article.title %></h2>
+
     <h5 class="t-block"><%= @article.description.html_safe %></h5>
     <div id="spot" class="t-block">
       <%= @article.text.html_safe %>
