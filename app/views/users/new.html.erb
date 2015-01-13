@@ -5,27 +5,27 @@
       <div class="modal-header">
         <h4 class="modal-title center" id="geg-login-modLabel">Регистрация нового пользователя</h4>
       </div>
-      <div class="modal-body">
-        <%= form_for(@user) do |f| %>
-          <%= render 'shared/error_messages' %>
+        <div class="modal-body">
+          <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages' %>
 
-          <%= f.label :name, 'Введите Ваше имя' %>
-          <%= f.text_field :name, class: 'form-control' %>
+            <%= f.label :name, 'Введите Ваше имя' %>
+            <%= f.text_field :name, class: 'form-control', 'placeholder' => 'Ваше имя' %>
 
-          <%= f.label :email, 'Введите Ваш адрес электронной почты' %>
-          <%= f.email_field :email, class: 'form-control' %>
+            <%= f.label :email, 'Введите Ваш адрес электронной почты' %>
+            <%= f.email_field :email, class: 'form-control', 'placeholder' => 'Ваш email' %>
 
-          <%= f.label :password, 'Введите пароль' %>
-          <%= f.password_field :password, class: 'form-control' %>
+            <%= f.label :password, 'Введите пароль' %>
+            <%= f.password_field :password, class: 'form-control', 'placeholder' => 'Ваш пароль' %>
 
-          <%= f.label :password_confirmation, 'Подтвердите пароль' %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
+            <%= f.label :password_confirmation, 'Подтвердите пароль' %>
+            <%= f.password_field :password_confirmation, class: 'form-control', 'placeholder' => 'Подтвердите пароль, пожалуйста' %>
 
-          <div class="modal-footer">
-          <%= f.submit 'Создать учетную запись', class: 'btn btn-primary' %>
-          <%= link_to 'Отмена', root_path, class: 'btn btn-default' %>
-          </div>
-        <% end %>
+            <div class="modal-footer">
+              <%= f.submit 'Создать учетную запись', class: 'btn btn-primary' %>
+              <%= link_to 'Отмена', root_path, class: 'btn btn-default' %>
+            </div>
+          <% end %>
       </div>
     </div>
   </div>

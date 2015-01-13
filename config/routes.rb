@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   resources :articles do
     resources :comments
   end
-  root 'welcome#index'
-  get 'help' => 'welcome#help'
-  get 'about' => 'welcome#about'
-  get 'contact' => 'welcome#contact'
-  get 'signup' => 'users#new'
+  root   'welcome#index'
+  get    'help'    => 'welcome#help'
+  get    'about'   => 'welcome#about'
+  get    'contact' => 'welcome#contact'
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

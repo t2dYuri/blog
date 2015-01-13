@@ -5,7 +5,7 @@ a:link, a:visited, a:hover, a:focus, a:active, .btn:focus, .btn:focus:active, .a
   outline: none;
   color: $dark-blue;
 }
-.bg-primary, .container-fluid, .t-block, .scroll-to-top, .li-zebra, .prev-next, .li-comm, {
+.bg-primary, .container-fluid, .t-block, .scroll-to-top, .li-zebra, .prev-next, .li-comm {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -190,14 +190,21 @@ section {
 .gravatar_edit {
   margin-top: 15px;
 }
+/* --- Modal Windows --- */
 .reg-login-mod {
   background-image: asset-url("s5_background3.jpg");
+}
+.close {
+  opacity: 1;
+}
+.modal-header, .modal-footer {
+  background-color: #eeeeee;
 }
 /* --- Debug --- */
 .debug_dump {
   margin-top: 10px;
 }
-/* --- TESTING --- */
+/* --- Errors --- */
 #error_explanation {
   color: #ae0000;
   ul {
@@ -205,10 +212,11 @@ section {
     margin: 0 0 30px 0;
   }
 }
-
 .field_with_errors {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
   }
 }
+/* --- TESTING --- */
+

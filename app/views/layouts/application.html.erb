@@ -13,7 +13,7 @@
   <%= render 'layouts/header' %>
   <div class="container-fluid">
     <% flash.each do |message_type, message| %>
-      <h3 class="alert center alert-<%= message_type %>"><%= message %></h3>
+      <%= content_tag(:h3, message, class: "alert center alert-#{message_type}") %>
     <% end %>
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>

@@ -1,0 +1,31 @@
+<% provide(:title, 'Вход') %>
+<div class="modal fade reg-login-mod" id="reg-login-mod" tabindex="-1" role="dialog" aria-labelledby="reg-login-modLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= link_to root_path, class: 'del-but close' do %>
+          <i class="glyphicon glyphicon-remove" title="Закрыть окно"></i>
+        <% end %>
+        <h4 class="modal-title center" id="geg-login-modLabel">Вход пользователя</h4>
+      </div>
+      <div class="modal-body">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:h4, message, class: "alert center alert-#{message_type}") %>
+        <% end %>
+        <%= form_for(:session, url: login_path) do |f| %>
+
+          <%= f.label :email, 'Введите адрес Вашей электронной почты' %>
+          <%= f.email_field :email, class: 'form-control', 'placeholder' => 'Ваш email' %>
+
+          <%= f.label :password, 'Введите пароль' %>
+          <%= f.password_field :password, class: 'form-control', 'placeholder' => 'Ваш пароль' %>
+          <hr>
+            <%= f.submit 'Войти', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        Еще не с нами? <%= link_to 'Зарегистрируйтесь', signup_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+</div>
