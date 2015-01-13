@@ -13,7 +13,6 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'bcrypt'
 gem 'jbuilder', '~> 2.0'
-gem 'thin'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -34,4 +33,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'unicorn'
 end

@@ -28,13 +28,15 @@ h1, h2 {
 h2 {
   margin-top: 10px;
 }
+input, textarea, select, .uneditable-input {
+  margin-bottom: 15px;
+}
 textarea {
   resize: vertical;
 }
 section {
   overflow: auto;
 }
-
 .container-fluid {
   padding-bottom: 10px;
   margin-top: 50px;
@@ -180,4 +182,33 @@ section {
   padding: 5px;
   border-bottom: solid $dark-blue;
 }
+/* --- User --- */
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+.gravatar_edit {
+  margin-top: 15px;
+}
+.reg-login-mod {
+  background-image: asset-url("s5_background3.jpg");
+}
+/* --- Debug --- */
+.debug_dump {
+  margin-top: 10px;
+}
 /* --- TESTING --- */
+#error_explanation {
+  color: #ae0000;
+  ul {
+    color: #ae0000;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}

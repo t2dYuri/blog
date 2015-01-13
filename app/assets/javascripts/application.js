@@ -22,3 +22,7 @@
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+$(function() {
+    $("#reg-login-mod").modal();
+});
