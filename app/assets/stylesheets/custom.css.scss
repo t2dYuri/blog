@@ -1,19 +1,23 @@
 @import "bootstrap-sprockets", "bootstrap";
-$dark-blue: #135b8f;
-
-a:link, a:visited, a:hover, a:focus, a:active, .btn:focus, .btn:focus:active, .active.btn:focus {
+$dark-blue: #00558f;
+$link-color: #00558f;
+$link-hover: #0079b9;
+$pan-text-color: #c8d6df;
+$pan-text-hover: #ffffff;
+$shadow-color: #2e4a60;
+@mixin e-shadow {
+  -moz-box-shadow: 2px 2px 10px $shadow-color;
+  -webkit-box-shadow: 2px 2px 10px $shadow-color;
+  box-shadow: 2px 2px 10px $shadow-color;
+}
+/* --- Links --- */
+a:link, a:visited {
   outline: none;
-  color: $dark-blue;
-}
-.bg-primary, .container-fluid, .t-block, .scroll-to-top, .li-zebra, .prev-next, .li-comm {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.t-block, .panel, .li-zebra, .bg-primary, .jumbotron, .li-comm, .form-control {
-  -moz-box-shadow: 0 0 5px #003a5b;
-  -webkit-box-shadow: 0 0 5px #003a5b;
-  box-shadow: 0 0 5px #003a5b;
+  color: $link-color;
+  text-decoration: none;
+  &:hover, &:focus, &:active {
+    color: $link-hover;
+  }
 }
 body {
   background-image: asset-url("s5_background3.jpg");
@@ -38,6 +42,7 @@ section {
   overflow: auto;
 }
 .container-fluid {
+  border-radius: 6px;;
   padding-bottom: 10px;
   margin-top: 50px;
   margin-bottom: 20px;
@@ -45,18 +50,55 @@ section {
   max-width: 1400px;
 }
 .t-block {
+  @include e-shadow;
   padding: 5px;
   background-color: #fafafa;
+  border-radius: 6px;
 }
 .center {
   text-align: center;
 }
 .bg-primary {
+  @include e-shadow;
   padding: 5px;
   background: rgba(0,0,0,0.4);
   color: #ddd;
+  border-radius: 6px;
 }
-/* --- Control Buttons --- */
+.form-control {
+  @include e-shadow;
+}
+/* --- Buttons --- */
+.btn:focus, .btn:focus:active {
+  outline: none;
+}
+.btn-main, .btn-main:link, .btn-main:visited {
+  padding: 6px 12px;
+  text-align: center;
+  font-size: 14px;
+  vertical-align: middle;
+  color: $pan-text-color;
+  background: rgba(0, 27, 53, 0.8) none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  -ms-appearance: button;
+  appearance: button;
+  &:hover, &:active, &:focus {
+    color: $pan-text-hover;
+    text-decoration: none;
+    background: $link-color none;
+  }
+}
 .show-but {
   margin: 0 0 0 5px;
   :hover, :active, :focus {
@@ -75,7 +117,6 @@ section {
     color: #dd0000;
   }
 }
-/* --- Scroll to top button --- */
 .scroll-to-top {
   display: none;
   position: fixed; bottom: 30px; right: 30px;
@@ -84,80 +125,73 @@ section {
   padding-top: 5px;
   padding-right: 5px;
   background-color: rgba(180, 180, 180, 0.3);
+  border-radius: 6px;
   box-shadow: 0 0 7px #333;
   a:link, a:visited, a:hover, a:focus, a:active {
     color: rgba(220, 220, 220, 1.0);
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1.0);
-    text-decoration: none;
+    text-shadow: 1px 1px 4px #333;
   }
-}
-.scroll-to-top:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  &:hover {
+    background: rgba(0, 0, 0, 0.30);
+  }
 }
 /* --- Navbars --- */
 .navbar-fixed-top {
-  background: rgba(0, 0, 0, 0.5);
-  max-height: 40px;
+  //  max-height: 50px;
+  background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0)));
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  background: -o-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  background: -ms-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  .dropdown-menu {
+    background: rgba(0, 0, 0, 0.5);
+    a:link, a:visited {
+      color: $pan-text-color;
+      }
+    a:hover, a:focus, a:active {
+      color: $pan-text-hover;
+      background: rgba(0, 0, 0, 0.5);
+      }
+    .divider {
+      background-color: black;
+    }
+  }
 }
 .nav-but, .nav-but:link, .nav-but:visited {
-  color: #bbb;
+  color: $pan-text-color;
   border: none;
-  margin: 4px;
+  margin-top: 4px;
+  margin-bottom: 8px;
   &:hover, &:active, &:focus {
-    color: white;
+    color: $pan-text-hover;
   }
 }
 .navbar-fixed-bottom {
   background: rgba(0, 0, 0, 0.5);
   a:link, a:visited, a:hover, a:focus, a:active {
-    color: #e3e3e3;
+    color: $pan-text-color;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
   }
 }
 .nav-time {
-  color: #337AB7;
-  margin: 9px;
+  color: $pan-text-color;
+  margin-top: 11px;
+  margin-left: 5px;
 }
-.nav-logo {
-  margin-left: 10px;
-  margin-top: 5px;
-}
-.dropdown-menu {
-  background: rgba(0, 0, 0, 0.6);
-  a:link, a:visited, a:hover, a:focus, a:active {
-    color: #ccc;
-  }
-  .divider {
-    background-color: black;
-  }
-  > li > a:hover, a:focus {
-    background: none;
-    color: white;
-    background: rgba(0, 0, 0, 0.3);
-  }
-}
+//.nav-logo {
+//  margin-left: 10px;
+//  margin-top: 5px;
+//  border: 1px solid rgba(187, 187, 187, 0.50);
+//}
+/* --- Scroll to top button --- */
+
 /* --- Article Index --- */
 .li-zebra {
+  @include e-shadow;
   margin-top: 5px;
   padding: 5px 10px;
-  border-bottom: solid;
-  border-color: $dark-blue;
-}
-/* --- Article Show --- */
-.prev-next {
-  padding: 3px 5px 5px;
-  background-color: rgba(180, 180, 180, 0.3);
-  box-shadow: 2px 2px 7px #333;
-  text-align:center;
-  a:link, a:visited, a:hover, a:focus, a:active {
-    font: bold 0.9em/1.2em Arial, Helvetica, sans-sherif;
-    color: #ddd;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
-    text-decoration: none;
-  }
-}
-.prev-next:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
 }
 /* --- Comments --- */
 .panel-top {
@@ -166,6 +200,7 @@ section {
 .panel {
   background: rgba(255, 255, 255, 0.8);
   border: none;
+  @include e-shadow;
 }
 .panel-heading {
   border-bottom: 1px solid #aaa;
@@ -177,10 +212,11 @@ section {
   text-align: center;
 }
 .li-comm {
+  @include e-shadow;
   background-color: white;
   margin-bottom: 5px;
   padding: 5px;
-  border-bottom: solid $dark-blue;
+  border-radius: 6px;
 }
 /* --- User --- */
 .gravatar {
@@ -198,7 +234,7 @@ section {
   opacity: 1;
 }
 .modal-header, .modal-footer {
-  background-color: #eeeeee;
+  background-color: $pan-text-color;
 }
 /* --- Debug --- */
 .debug_dump {
@@ -219,4 +255,3 @@ section {
   }
 }
 /* --- TESTING --- */
-
