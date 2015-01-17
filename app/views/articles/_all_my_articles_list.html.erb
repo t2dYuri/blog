@@ -1,4 +1,4 @@
-<h1 class="text-center bg-primary">Все мои статьи</h1>
+<h2 class="text-center bg-header">Все мои статьи</h2>
 <ul class="list-unstyled">
   <% @articles.order('updated_at DESC').each do |article| %>
       <% zebra = cycle('#F3F3F3', '#FFFFFF') %>

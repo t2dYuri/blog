@@ -1,15 +1,19 @@
 @import "bootstrap-sprockets", "bootstrap";
+
+$max-body-width: 1400px;
 $dark-blue: #00558f;
 $link-color: #00558f;
 $link-hover: #0079b9;
 $pan-text-color: #c8d6df;
 $pan-text-hover: #ffffff;
 $shadow-color: #2e4a60;
+
 @mixin e-shadow {
   -moz-box-shadow: 2px 2px 10px $shadow-color;
   -webkit-box-shadow: 2px 2px 10px $shadow-color;
   box-shadow: 2px 2px 10px $shadow-color;
 }
+
 /* --- Links --- */
 a:link, a:visited {
   outline: none;
@@ -20,7 +24,7 @@ a:link, a:visited {
   }
 }
 body {
-  background-image: asset-url("s5_background3.jpg");
+  background-image: asset-url("back16.jpg");
 }
 h1, h2, h3, h4, h5, h6, p {
   line-height: 1;
@@ -41,13 +45,16 @@ textarea {
 section {
   overflow: auto;
 }
+.center {
+  text-align: center;
+}
 .container-fluid {
   border-radius: 6px;;
   padding-bottom: 10px;
   margin-top: 50px;
   margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.5);
-  max-width: 1400px;
+  max-width: $max-body-width;
 }
 .t-block {
   @include e-shadow;
@@ -55,14 +62,11 @@ section {
   background-color: #fafafa;
   border-radius: 6px;
 }
-.center {
-  text-align: center;
-}
-.bg-primary {
+.bg-header {
   @include e-shadow;
   padding: 5px;
-  background: rgba(0,0,0,0.4);
-  color: #ddd;
+  background: rgba(0,0,0,0.5);
+  color: $pan-text-color;
   border-radius: 6px;
 }
 .form-control {
@@ -137,7 +141,6 @@ section {
 }
 /* --- Navbars --- */
 .navbar-fixed-top {
-  //  max-height: 50px;
   background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0)));
   background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
@@ -158,34 +161,29 @@ section {
     }
   }
 }
+.navbar-fixed-bottom {
+  height: 26px;
+  background: -moz-linear-gradient(bottom,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0)));
+  background: -webkit-linear-gradient(bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  background: -o-linear-gradient(bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  background: -ms-linear-gradient(bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+}
+.pan-container {
+  max-width: $max-body-width;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 .nav-but, .nav-but:link, .nav-but:visited {
   color: $pan-text-color;
   border: none;
-  margin-top: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   &:hover, &:active, &:focus {
     color: $pan-text-hover;
   }
 }
-.navbar-fixed-bottom {
-  background: rgba(0, 0, 0, 0.5);
-  a:link, a:visited, a:hover, a:focus, a:active {
-    color: $pan-text-color;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
-  }
-}
-.nav-time {
-  color: $pan-text-color;
-  margin-top: 11px;
-  margin-left: 5px;
-}
-//.nav-logo {
-//  margin-left: 10px;
-//  margin-top: 5px;
-//  border: 1px solid rgba(187, 187, 187, 0.50);
-//}
-/* --- Scroll to top button --- */
-
 /* --- Article Index --- */
 .li-zebra {
   @include e-shadow;
@@ -198,9 +196,9 @@ section {
   margin-top: 18px;
 }
 .panel {
+  @include e-shadow;
   background: rgba(255, 255, 255, 0.8);
   border: none;
-  @include e-shadow;
 }
 .panel-heading {
   border-bottom: 1px solid #aaa;
@@ -228,7 +226,7 @@ section {
 }
 /* --- Modal Windows --- */
 .reg-login-mod {
-  background-image: asset-url("s5_background3.jpg");
+  background-image: asset-url("back16.jpg");
 }
 .close {
   opacity: 1;
@@ -254,4 +252,3 @@ section {
     color: $state-danger-text;
   }
 }
-/* --- TESTING --- */

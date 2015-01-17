@@ -1,13 +1,13 @@
-<header class="navbar-fixed-top navbar-inverse">
-  <!--<span class="pull-left nav-logo img-rounded">-->
+<header class="navbar-fixed-top">
+  <!--<span class="pull-left img-rounded">-->
     <%# if logged_in? %>
       <%#= gravatar_for current_user, class: 'nav-logo', size: 40 %>
     <%# else %>
       <%#= link_to image_tag('blogg.png', height: '50', width: '50'), root_path %>
     <%# end %>
   <!--</span>-->
-  <span class="pull-left nav-time"><%= Time.now.strftime '%d.%m.%Y' %></span>
-  <div class="center">
+  <div class="pan-container">
+    <span class="pull-left btn nav-but"><%= Time.now.strftime '%d.%m.%Y' %></span>
     <%= link_to root_path, class: 'btn nav-but' do %>
         <i class="glyphicon glyphicon-home"></i> Главная
     <% end %>

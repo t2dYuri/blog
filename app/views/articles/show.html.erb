@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8">
     <small class="float-left">последнее обновление: <strong><%= @article.updated_at.strftime '%d-%m-%Y в %X' %></strong></small>
-    <h2 class="text-center"><%= @article.title %></h2>
+    <h2 class="bg-header"><%= @article.title %></h2>
     <h5 class="t-block"><%= @article.description.html_safe %></h5>
     <div id="spot" class="t-block">
       <%= @article.text.html_safe %>
@@ -14,8 +14,7 @@
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
-        <%= render html: '<center>Пока что никто не комментировал эту статью</center>'
-                       .html_safe unless @article.comments.count > 0 %>
+        <%= render html: '<center>Пока что никто не комментировал эту статью</center>'.html_safe unless @article.comments.count > 0 %>
         <%= render @article.comments.order('updated_at DESC') %>
         </ul>
       </div>
@@ -31,12 +30,34 @@
   </div>
 </div>
 
-<nav class="navbar-fixed-bottom" role="navigation">
-  <div class="text-center">
-    <%= link_to 'предыдущая статья', @article.previous_article, class: 'pull-left' if @article.previous_article %> |
-    <%= link_to 'редактировать статью', edit_article_path(@article), 'data-no-turbolink' => true %> |
-    <%= link_to 'удалить эту статью', article_path(@article), method: :delete, data: {confirm: 'Серьезно?'} %> |
-    <%= link_to 'обратно к списку', articles_path %> |
-    <%= link_to 'следующая статья', @article.next_article, class: 'pull-right' if @article.next_article %>
+<nav class="navbar-fixed-bottom">
+  <div class="pan-container">
+    <% if @article.previous_article %>
+      <%= link_to @article.previous_article, class: 'btn nav-but pull-left' do %>
+        <i class="glyphicon glyphicon-arrow-left"></i> Предыдущая
+      <% end %>
+    <% else %>
+      <i class="glyphicon glyphicon-refresh btn nav-but pull-left"></i>
+    <% end %>
+
+    <%= link_to edit_article_path(@article), 'data-no-turbolink' => true, class: 'btn nav-but' do %>
+      <i class="glyphicon glyphicon-edit"></i> Редактировать
+    <% end %>
+
+    <%= link_to article_path(@article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'btn nav-but' do %>
+    <i class="glyphicon glyphicon-trash"></i> Удалить
+    <% end %>
+
+    <%= link_to articles_path, class: 'btn nav-but' do %>
+      <i class="glyphicon glyphicon-list-alt"></i> К списку
+    <% end %>
+
+    <% if @article.next_article %>
+      <%= link_to @article.next_article, class: 'btn nav-but pull-right' do %>
+        Следующая <i class="glyphicon glyphicon-arrow-right"></i>
+      <% end %>
+    <% else %>
+      <i class="glyphicon glyphicon-refresh btn nav-but pull-right"></i>
+    <% end %>
   </div>
 </nav>
