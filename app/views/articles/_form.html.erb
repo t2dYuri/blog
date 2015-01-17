@@ -1,29 +1,31 @@
-<%= form_for @article do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, 'error') %> prohibited:</h2>
+<div class="f-block">
+  <%= form_for @article do |f| %>
+
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <div class="alert alert-danger center">
+          <%= pluralize(@article.errors.count, 'error') %> prohibited:
+        </div>
         <ul>
           <% @article.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label 'Название' %><br>
+      </div>
+    <% end %>
+
+    <%= f.label 'Название' %>
     <%= f.text_field :title, class: 'form-control' %>
-  </p>
-    <p>
-      <%= f.label 'Описание' %><small> (Не более 220 символов)</small><br>
-      <%= tinymce_assets %>
-      <%= tinymce %>
-      <%= f.text_area :description, class: 'form-control', size: '10x5' %>
-    </p>
-  <p>
-    <%= f.label 'Текст' %><br>
+
+    <%= f.label 'Описание' %><small> (Не более 220 символов)</small>
+    <%= tinymce_assets %>
+    <%= tinymce %>
+    <%= f.text_area :description, class: 'form-control', size: '10x5' %>
+
+    <%= f.label 'Текст' %>
     <%= f.text_area :text, class: 'tinymce', size: '10x10' %>
-  </p>
-  <!--<p>-->
-    <%= f.submit 'сохранить', class: 'btn-main' %>
-  <!--</p>-->
-<% end %>
+    <hr>
+    <%= f.submit 'Сохранить изменения', class: 'btn btn-main' %>
+    <%= link_to 'Отмена', articles_path, class: 'btn btn-default' %>
+  <% end %>
+</div>

@@ -19,8 +19,13 @@
 
           <%= f.label :password, 'Введите пароль' %>
           <%= f.password_field :password, class: 'form-control', 'placeholder' => 'Ваш пароль' %>
+
+          <%= f.label :remember_me, class: 'checkbox inline' do %>
+            <%= f.check_box :remember_me %>
+            <span>Запомнить меня на этом компьютере</span>
+          <% end %>
           <hr>
-            <%= f.submit 'Войти', class: 'btn-main' %>
+          <%= f.submit 'Войти', class: 'btn-main' %>
         <% end %>
       </div>
       <div class="modal-footer">
