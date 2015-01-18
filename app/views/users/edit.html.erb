@@ -1,0 +1,36 @@
+<% provide(:title, 'Редактирование пользователя') %>
+<div class="modal fade reg-login-mod" id="reg-login-mod" tabindex="-1" role="dialog" aria-labelledby="reg-login-modLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= link_to current_user, class: 'del-but close' do %>
+          <i class="glyphicon glyphicon-remove" title="Закрыть окно"></i>
+        <% end %>
+        <h4 class="modal-title center" id="geg-login-modLabel">Редактирование пользователя <%= current_user.name %></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages' %>
+
+          <%= f.label :name, 'Ваше новое имя' %>
+          <%= f.text_field :name, class: 'form-control' %>
+
+          <%= f.label :email, 'Новый адрес Вашей электронной почты' %>
+          <%= f.email_field :email, class: 'form-control' %>
+
+          <%= f.label :password, 'Изменить пароль' %>
+          <%= f.password_field :password, class: 'form-control', 'placeholder' => 'новый пароль' %>
+
+          <%= f.label :password_confirmation, 'Подтвердите новый пароль' %>
+          <%= f.password_field :password_confirmation, class: 'form-control', 'placeholder' => 'подтвердите пароль, пожалуйста' %>
+          <hr>
+          <%= f.submit 'Сохранить изменения', class: 'btn btn-main' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target=_blank>Изменить аватарку для моей электронной почты через Gravatar.com</a>
+      </div>
+    </div>
+  </div>
+</div>

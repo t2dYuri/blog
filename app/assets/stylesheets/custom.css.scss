@@ -36,6 +36,10 @@ h1, h2 {
 h2 {
   margin-top: 10px;
 }
+h4, h5, h6 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
 }
@@ -232,9 +236,6 @@ section {
 .gravatar {
   float: left;
   margin-right: 10px;
-}
-.gravatar_edit {
-  margin-top: 15px;
 }
 /* --- Modal Windows --- */
 .reg-login-mod {

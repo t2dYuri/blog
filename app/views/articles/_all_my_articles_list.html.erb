@@ -1,18 +1,13 @@
 <h2 class="text-center bg-header">Все мои статьи</h2>
 <ul class="list-unstyled">
   <% @articles.order('updated_at DESC').each do |article| %>
-      <% zebra = cycle('#F3F3F3', '#FFFFFF') %>
+      <% zebra = cycle('#EEEEEE', '#FFFFFF') %>
       <li class="li-zebra" style="background: <%= zebra %>">
         <h4>
           <%= link_to truncate(article.title, length: 60), article_path(article) %>
           <small>
             <em><%= article.updated_at.strftime '%d-%m-%Y в %X' %></em>
           </small>
-          <!--<span class="pull-right btn-group">-->
-            <%#= link_to 'показать', article_path(article), class: 'btn btn-default btn-xs btn-artlist' %>
-            <%#= link_to 'изменить', edit_article_path(article), 'data-no-turbolink' => true, class: 'btn btn-default btn-xs btn-artlist' %>
-            <%#= link_to 'удалить', article_path(article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'btn btn-default btn-xs btn-artlist' %>
-          <!--</span>-->
           <span class="pull-right">
             <%= link_to article_path(article), class: 'show-but' do %>
                 <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Читать статью"></i>

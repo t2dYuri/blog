@@ -1,16 +1,14 @@
 <header class="navbar-fixed-top">
-  <!--<span class="pull-left img-rounded">-->
-    <%# if logged_in? %>
-      <%#= gravatar_for current_user, class: 'nav-logo', size: 40 %>
-    <%# else %>
-      <%#= link_to image_tag('blogg.png', height: '50', width: '50'), root_path %>
-    <%# end %>
-  <!--</span>-->
   <div class="pan-container">
-    <span class="pull-left btn nav-but"><%= Time.now.strftime '%d.%m.%Y' %></span>
+
+    <span class="pull-left btn nav-but">
+      <%= Time.now.strftime '%d.%m.%Y' %>
+    </span>
+
     <%= link_to root_path, class: 'btn nav-but' do %>
         <i class="glyphicon glyphicon-home"></i> Главная
     <% end %>
+
     <div class="btn-group">
       <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-info-sign"></i> Инфо <b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -19,6 +17,7 @@
         <li><%= link_to 'Обратная связь', contact_path %></li>
       </ul>
     </div>
+
     <div class="btn-group">
       <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-book"></i> Статьи <b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -27,23 +26,33 @@
         <li><%= link_to 'Написать статью', new_article_path, 'data-no-turbolink' => true %></li>
       </ul>
     </div>
+
     <% if logged_in? %>
-    <div class="btn-group pull-right">
-      <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <%= current_user.name %> <b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to 'Мой профиль', current_user %></li>
-        <li><%= link_to 'Настройки профиля', '#' %></li>
-        <li class="divider"></li>
-        <li><%= link_to 'Выход из профиля', logout_path, method: 'delete' %></li>
-      </ul>
-    </div>
+
+      <%= link_to users_path, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-user"></i> Пользователи
+      <% end %>
+
+      <div class="btn-group pull-right">
+        <a href="#" class="dropdown-toggle btn nav-but" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i> <%= current_user.name %> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Мой профиль', current_user %></li>
+          <li><%= link_to 'Настройки профиля', edit_user_path(current_user) %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Выход из профиля', logout_path, method: 'delete' %></li>
+        </ul>
+      </div>
+
     <% else %>
+
       <%= link_to login_path, class: 'btn nav-but' do %>
         <i class="glyphicon glyphicon-user"></i> Вход
       <% end %>
       <%= link_to signup_path, class: 'btn nav-but' do %>
         <i class="glyphicon glyphicon-star"></i> Регистрация
       <% end %>
+
     <% end %>
+
   </div>
 </header>
