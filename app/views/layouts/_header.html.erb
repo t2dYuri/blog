@@ -2,7 +2,7 @@
   <div class="pan-container">
 
     <span class="pull-left btn nav-but">
-      <%= Time.now.strftime '%d.%m.%Y' %>
+      <%= Time.zone.now.strftime '%d.%m.%Y' %>
     </span>
 
     <%= link_to root_path, class: 'btn nav-but' do %>

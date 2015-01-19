@@ -26,7 +26,7 @@ a:link, a:visited {
 body {
   background-image: asset-url("back16.jpg");
 }
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 h1, h2 {
@@ -34,7 +34,7 @@ h1, h2 {
   text-align: center;
 }
 h2 {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 h4, h5, h6 {
   margin-top: 5px;
@@ -62,8 +62,8 @@ section {
 }
 .t-block {
   @include e-shadow;
-  padding: 5px;
-  background-color: #fafafa;
+  padding: 5px 10px;
+  background-color: #ffffff;
   border-radius: 6px;
 }
 .f-block {
@@ -77,10 +77,15 @@ section {
 }
 .bg-header {
   @include e-shadow;
-  padding: 5px;
+  padding: 5px 10px;
   background: rgba(0,0,0,0.5);
   color: $pan-text-color;
   border-radius: 6px;
+}
+.article-header {
+  @extend .bg-header;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 .form-control {
   @include e-shadow;
@@ -88,6 +93,10 @@ section {
 .checkbox {
   margin-left: 20px;
   font-weight: normal;
+}
+.pagination {
+  @extend .pagination-sm;
+  margin: 0;
 }
 /* --- Buttons --- */
 .btn:focus, .btn:focus:active {

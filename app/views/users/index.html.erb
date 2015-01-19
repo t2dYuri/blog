@@ -2,34 +2,15 @@
 <div class="row">
   <div class="col-md-4">
     <h2 class="text-center bg-header">Пользователи</h2>
+
     <ul class="list-unstyled">
-      <% @users.order('created_at ASC').each do |user| %>
-        <% zebra = cycle('#EEEEEE', '#FFFFFF') %>
-        <li class="li-zebra" style="background: <%= zebra %>">
-
-          <%= gravatar_for user, size: 50 %>
-
-          <span class="pull-right">
-            <%= link_to user, class: 'show-but' do %>
-              <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Профиль пользователя"></i>
-            <% end %>
-            <%= link_to edit_user_path(user), class: 'edit-but' do %>
-              <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
-            <% end %>
-            <%= link_to '#', method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but' do %>
-              <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить пользователя"></i>
-            <% end %>
-          </span>
-
-          <h4><%= link_to user.name, user %></h4>
-
-          Зарегистрирован: <%= user.created_at.strftime '%d-%m-%Y в %H:%M' %>
-
-        </li>
-      <% end %>
+      <%= render @users.order('created_at ASC') %>
     </ul>
+
+    <%= will_paginate @users, :param_name => 'users_page', class: 'center' %>
   </div>
   <div class="col-md-8">
     <%= render 'articles/all_my_articles_list' %>
+    <%= will_paginate @articles, :param_name => 'articles_page', class: 'center' %>
   </div>
 </div>
