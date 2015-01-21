@@ -1,4 +1,4 @@
-<% provide(:title, 'Вход') %>
+<% provide(:title, 'Сброс пароля') %>
 <div class="modal fade reg-login-mod" id="reg-login-mod" tabindex="-1" role="dialog" aria-labelledby="reg-login-modLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -6,31 +6,22 @@
         <%= link_to root_path, class: 'del-but close' do %>
           <i class="glyphicon glyphicon-remove" title="Закрыть окно"></i>
         <% end %>
-        <h4 class="modal-title center" id="geg-login-modLabel">Вход пользователя</h4>
+        <h4 class="modal-title center" id="reg-login-modLabel">Сброс пароля</h4>
       </div>
       <div class="modal-body">
         <% flash.each do |message_type, message| %>
           <%= content_tag(:h4, message, class: "alert center alert-#{message_type}") %>
         <% end %>
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
 
           <%= f.label :email, 'Введите адрес Вашей электронной почты' %>
           <%= f.email_field :email, class: 'form-control', 'placeholder' => 'Ваш email' %>
-
-          <%= f.label :password, 'Введите пароль' %>
-          <%= link_to ' (Забыли пароль?)', new_password_reset_path %>
-          <%= f.password_field :password, class: 'form-control', 'placeholder' => 'Ваш пароль' %>
-
-          <%= f.label :remember_me, class: 'checkbox inline' do %>
-            <%= f.check_box :remember_me %>
-            <span>Запомнить меня на этом компьютере</span>
-          <% end %>
           <hr>
-          <%= f.submit 'Войти', class: 'btn-main' %>
+          <%= f.submit 'Сбросить пароль', class: 'btn-main' %>
         <% end %>
       </div>
       <div class="modal-footer">
-        Еще не с нами? <%= link_to 'Зарегистрируйтесь', signup_path, class: 'btn btn-default' %>
+        <%= link_to 'Вернуться на страницу входа', login_path, class: 'btn btn-default' %>
       </div>
     </div>
   </div>

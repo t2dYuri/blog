@@ -1,0 +1,28 @@
+<% provide(:title, 'Новый пароль') %>
+<div class="modal fade reg-login-mod" id="reg-login-mod" tabindex="-1" role="dialog" aria-labelledby="reg-login-modLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= link_to current_user, class: 'del-but close' do %>
+          <i class="glyphicon glyphicon-remove" title="Закрыть окно"></i>
+        <% end %>
+        <h4 class="modal-title center" id="geg-login-modLabel">Новый пароль</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+          <%= render 'shared/error_messages' %>
+
+          <%= hidden_field_tag :email, @user.email %>
+
+          <%= f.label :password, 'Введите новый пароль' %>
+          <%= f.password_field :password, class: 'form-control', 'placeholder' => 'новый пароль' %>
+
+          <%= f.label :password_confirmation, 'Подтвердите новый пароль' %>
+          <%= f.password_field :password_confirmation, class: 'form-control', 'placeholder' => 'подтвердите пароль, пожалуйста' %>
+          <hr>
+          <%= f.submit 'Обновить пароль', class: 'btn btn-main' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
