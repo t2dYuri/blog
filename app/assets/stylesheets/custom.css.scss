@@ -257,11 +257,10 @@ section {
 .modal-header, .modal-footer {
   background-color: $pan-text-color;
 }
-/* --- Debug --- */
+/* --- Debug - Errors --- */
 .debug_dump {
   margin-top: 10px;
 }
-/* --- Errors --- */
 #error_explanation {
   color: #ae0000;
   ul {
