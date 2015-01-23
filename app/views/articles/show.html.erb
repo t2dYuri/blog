@@ -2,13 +2,12 @@
   <div class="col-md-8">
     <div class="article-header">
       <h2><%= @article.title %></h2>
-      <span>Автор: <strong>Master Yuri Trendkiller</strong></span>
+      <span>Автор: <strong><%= link_to @article.user.name, @article.user, class: 'nav-but' %></strong></span>
       <span class="pull-right">от: <strong><%= @article.updated_at.strftime '%d-%m-%Y в %H:%M' %></strong></span>
     </div>
-    <div class="t-block">
-      <%= @article.description.html_safe %>
-    </div>
     <div id="spot" class="t-block">
+      <%= @article.description.html_safe %>
+      <hr>
       <%= @article.text.html_safe %>
     </div>
   </div>

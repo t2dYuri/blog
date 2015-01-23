@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "trend", password: "polik", except: [:index, :show]
+  # http_basic_authenticate_with name: "trend", password: "polik", except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -17,9 +17,17 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def create
-    @article = Article.new(article_params)
+  # def create
+  #   @article = Article.new(article_params)
+  #   if @article.save
+  #     redirect_to @article
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
+  def create
+    @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to @article
     else
@@ -44,7 +52,11 @@ class ArticlesController < ApplicationController
   end
 
   private
+  # def article_params
+  #   params.require(:article).permit(:title, :text, :description, :user_id)
+  # end
+
   def article_params
-    params.require(:article).permit(:title, :text, :description)
+    params.require(:article).permit(:title, :text, :description, :user_id)
   end
 end

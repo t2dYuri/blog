@@ -6,22 +6,27 @@
         <h3 class="panel-title">
           <%= gravatar_for @user, size: 100 %>
           <%= @user.name %>
-          <%= link_to edit_user_path(current_user), class: 'edit-but pull-right' do %>
-            <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
+          <% if current_user.admin? || current_user?(@user) %>
+            <%= link_to edit_user_path(@user), class: 'edit-but pull-right' do %>
+              <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
+            <% end %>
           <% end %>
         </h3>
-        <div class="center">Дата регистрации: <%= @user.created_at.strftime '%d-%m-%Y в %X' %></div>
+        <div class="center">Дата регистрации: <%= @user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
       </div>
       <div class="panel-body">
         <div>Читателей: 99999
           <%= link_to 'Подписаться', articles_path, class: 'btn-main pull-right' %>
         </div>
-        <p>Материалов: 999</p>
+        <p>Материалов: <%= @user.articles.count %></p>
         <p><%= @user.email %></p>
       </div>
     </div>
   </div>
-  <div class="col-md-8">
-    <h3 class="bg-header center">Место для статей этого пользователя</h3>
+  <div class="col-md-8 my-art-list">
+    <% if @user.articles.any? %>
+      <%= render 'articles/all_my_articles_list' %>
+      <%= will_paginate @articles, class: 'center' %>
+    <% end %>
   </div>
 </div>

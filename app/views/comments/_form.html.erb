@@ -1,17 +1,18 @@
 <%= form_for ([@article, @article.comments.build]) do |f| %>
   <% if logged_in? %>
 
-    <%= f.text_field :commenter, class: 'form-control', :value => "#{current_user.name}", :readonly => true %>
-    <%= f.label 'Комментарий' %>
-    <%= f.text_area :body, class: 'form-control', rows: 6 %>
+    <%= f.hidden_field :commenter, :value => current_user.name %>
+    <%#= f.text_field :commenter, class: 'form-control', :value => "#{current_user.name}", :readonly => true %>
+    <%#= f.label 'Комментарий' %>
+    <%= f.text_area :body, class: 'form-control', rows: 6, 'placeholder' => 'Ваш комментарий (максимум 500 символов)' %>
     <%= f.submit 'сохранить комментарий', class: 'btn btn-main' %>
 
   <% else %>
 
-    <%= f.label 'Ваше имя' %>
-    <%= f.text_field :commenter, class: 'form-control', :readonly => true %>
-    <%= f.label 'Комментарий' %>
-    <%= f.text_area :body, class: 'form-control', rows: 6, :readonly => true, 'placeholder' => 'Комментирование статей доступно только зарегистрированным пользователям. Пожалуйста, выберите нужное действие ниже...' %>
+    <%#= f.label 'Ваше имя' %>
+    <%#= f.text_field :commenter, class: 'form-control', :readonly => true %>
+    <%#= f.label 'Комментарий' %>
+    <%= f.text_area :body, class: 'form-control', disabled: true, rows: 6, 'placeholder' => 'Комментирование статей доступно только зарегистрированным пользователям. Пожалуйста, выберите нужное действие ниже...' %>
     <%= link_to 'Вход', login_path, class: 'btn btn-main' %>
     <%= link_to 'Регистрация', signup_path, class: 'btn btn-main' %>
 

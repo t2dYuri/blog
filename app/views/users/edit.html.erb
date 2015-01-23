@@ -6,7 +6,7 @@
         <%= link_to current_user, class: 'del-but close' do %>
           <i class="glyphicon glyphicon-remove" title="Закрыть окно"></i>
         <% end %>
-        <h4 class="modal-title center" id="geg-login-modLabel">Редактирование пользователя <%= current_user.name %></h4>
+        <h4 class="modal-title center" id="geg-login-modLabel">Редактирование профиля <%= @user.name %></h4>
       </div>
       <div class="modal-body">
         <%= form_for(@user) do |f| %>

@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    redirect_to root_url and return unless @user.activated
+    if logged_in?
+      @user = User.find(params[:id])
+      @articles = @user.articles.paginate(page: params[:page], :per_page => 10)
+    else
+      flash[:danger] = 'Только для зарегистрированных пользователей'
+      redirect_to login_url
+    end
   end
 
   def new

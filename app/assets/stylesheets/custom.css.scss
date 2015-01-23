@@ -211,7 +211,10 @@ section {
     color: $pan-text-hover;
   }
 }
-/* --- Article Index --- */
+/* --- Articles list --- */
+.my-art-list {
+  margin-top: 10px;
+}
 .li-zebra {
   @include e-shadow;
   margin-top: 5px;
