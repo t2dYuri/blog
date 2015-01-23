@@ -11,16 +11,30 @@
       <%= @article.text.html_safe %>
     </div>
   </div>
+
   <div class="col-md-4">
     <div class="panel">
       <div class="panel-heading">
         <h3 class="panel-title">Комментарии</h3>
       </div>
       <div class="panel-body">
-        <ul class="list-unstyled">
-        <%= render html: '<center>Пока что никто не комментировал эту статью</center>'.html_safe unless @article.comments.count > 0 %>
-        <%= render @article.comments.order('updated_at DESC') %>
-        </ul>
+        <%= render html: '<center>Пока что никто не комментировал эту статью</center>'.html_safe unless @comments.count > 0 %>
+        <% @comments.each do |comment| %>
+          <ul class="list-unstyled">
+            <li class="li-comm">
+              <em><small><%= comment.created_at.strftime '%d-%m-%Y в %H:%M' %></small></em>
+              <% if current_user.try(:admin?) || current_user.try(:name) == comment.commenter %>
+                <%= link_to article_comment_path(comment.article.id,comment.id), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but pull-right' do %>
+                  <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить комментарий"></i>
+                <% end %>
+              <% end %>
+              <br>
+              <strong><%= comment.commenter %>:</strong>
+              <%= comment.body %>
+            </li>
+          </ul>
+        <% end %>
+        <%= will_paginate @comments, class: 'center' %>
       </div>
     </div>
     <div class="panel">

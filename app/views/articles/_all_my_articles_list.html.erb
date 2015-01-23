@@ -1,6 +1,5 @@
-<!--<h3 class="text-center bg-header">Все материалы от <%#= @user.name %> </h3>-->
 <ul class="list-unstyled">
-  <% @articles.order('updated_at DESC').each do |article| %>
+  <% @articles.each do |article| %>
     <% zebra = cycle('#EEEEEE', '#FFFFFF') %>
     <li class="li-zebra" style="background: <%= zebra %>">
       <h4>

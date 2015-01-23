@@ -1,12 +1,15 @@
 class ArticlesController < ApplicationController
   # http_basic_authenticate_with name: "trend", password: "polik", except: [:index, :show]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.paginate(page: params[:page], :per_page => 10)
   end
 
   def show
     @article = Article.find(params[:id])
+    @comments = @article.comments.paginate(page: params[:page], :per_page => 10)
   end
 
   def new
@@ -52,11 +55,13 @@ class ArticlesController < ApplicationController
   end
 
   private
-  # def article_params
-  #   params.require(:article).permit(:title, :text, :description, :user_id)
-  # end
 
   def article_params
     params.require(:article).permit(:title, :text, :description, :user_id)
+  end
+
+  def correct_user
+    @article = current_user.articles.find_by(id: params[:id]) || current_user.admin?
+    redirect_to root_url if @article.nil?
   end
 end
