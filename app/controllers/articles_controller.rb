@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to articles_path
+    redirect_to request.referrer || root_url
   end
 
   private
@@ -62,6 +62,7 @@ class ArticlesController < ApplicationController
 
   def correct_user
     @article = current_user.articles.find_by(id: params[:id]) || current_user.admin?
-    redirect_to root_url if @article.nil?
+    # redirect_to root_url if @article.nil?
+    redirect_to root_url unless @article
   end
 end

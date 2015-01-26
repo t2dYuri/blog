@@ -1,0 +1,20 @@
+<div class="panel">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= gravatar_for current_user, size: 100 %>
+      <%= current_user.name %>
+      <%= link_to edit_user_path(current_user), class: 'edit-but pull-right' do %>
+        <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
+      <% end %>
+    </h3>
+    <div class="center">Дата регистрации: <%= current_user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
+  </div>
+  <div class="panel-body">
+    <div>
+      Материалов: <%= current_user.articles.count %>
+      <%= link_to 'Мои статьи', current_user, class: 'btn-main pull-right' %>
+    </div>
+    <p>Читателей: 99999</p>
+    <p><%= current_user.email %></p>
+  </div>
+</div>

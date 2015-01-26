@@ -9,13 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # if logged_in?
       @user = User.find(params[:id])
       @articles = @user.articles.paginate(page: params[:page], :per_page => 10)
-    # else
-    #   flash[:danger] = 'Только для зарегистрированных пользователей'
-    #   redirect_to login_url
-    # end
   end
 
   def new
@@ -60,15 +55,6 @@ class UsersController < ApplicationController
   end
 
   # Before filters
-
-  # Confirms a logged-in user.
-  # def logged_in_user
-  #   unless logged_in?
-  #     store_location
-  #     flash[:danger] = 'Только для зарегистрированных пользователей'
-  #     redirect_to login_url
-  #   end
-  # end
 
   # Confirms the correct user.
   def correct_user

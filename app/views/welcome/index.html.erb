@@ -1,8 +1,22 @@
+<% if logged_in? %>
+  <div class="row">
+  <div class="col-md-4">
+    <%= render 'shared/current_user_info' %>
+  </div>
+  <div class="col-md-8">
+    <h3>Последние материалы от друзей</h3>
+    <%#= render 'shared/feed' %>
+    <%#= render 'articles/all_articles' %>
+    <%#= will_paginate @articles, :param_name => 'articles_page', class: 'center' %>
+  </div>
+</div>
+<% else %>
+
 <h1>BloGG</h1>
+  <%= render 'articles/all_articles' %>
+  <%= will_paginate @articles, class: 'center' %>
 <hr>
 <%= link_to 'Статьи', articles_path, class: 'btn-main' %>
 <%= link_to 'Статьи', articles_path, class: 'btn btn-default' %>
-<hr>
-<div id="spot" class="t-block">
-  Для начала, давайте ответим на главный вопрос: Что такое облачное хранилище личных файлов и для чего оно может использоваться? Облачное (внешнее, онлайн) хранилище данных - это определенный размер дискового пространства на внешнем сервере, используемый для хранения Ваших персональных файлов и документов, с возможностью дальнейшей их синхронизации между разными устройствами и пользователями. Объем, функциональность и скоростные показатели зависят от компании, предоставляющей эту услугу.
-</div>
+
+<% end %>

@@ -11,11 +11,13 @@
           <%= link_to article_path(article), class: 'show-but' do %>
             <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Читать статью"></i>
           <% end %>
-          <%= link_to edit_article_path(article), 'data-no-turbolink' => true, class: 'edit-but' do %>
-            <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать статью"></i>
-          <% end %>
-          <%= link_to article_path(article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but' do %>
-            <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить статью"></i>
+          <% if current_user.try(:admin?) || current_user?(article.user) %>
+            <%= link_to edit_article_path(article), 'data-no-turbolink' => true, class: 'edit-but' do %>
+              <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать статью"></i>
+            <% end %>
+            <%= link_to article_path(article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but' do %>
+              <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить статью"></i>
+            <% end %>
           <% end %>
         </span>
       </h4>

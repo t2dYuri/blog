@@ -33,3 +33,11 @@ User.create!(name: 'Юрик тестовый пользователь',
                activated: true,
                activated_at: Time.zone.now)
 end
+
+# users = User.order(:created_at).take(5)
+# 11.times do
+#   characters = Faker::Lorem.characters(20)
+#   sentence = Faker::Lorem.sentence(5)
+#   paragraph = Faker::Lorem.paragraph(2)
+#   users.each { |user| user.articles.create!(title: characters, descroption: sentence, text: paragraph) }
+# end
