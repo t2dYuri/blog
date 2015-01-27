@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-  <% @articles.each do |article| %>
+  <% @articles.order('updated_at DESC').each do |article| %>
     <% zebra = cycle('#EEEEEE', '#FFFFFF') %>
     <li class="li-zebra" style="background: <%= zebra %>">
       <h4>

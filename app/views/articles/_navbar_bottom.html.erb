@@ -1,0 +1,34 @@
+<nav class="navbar-fixed-bottom">
+  <div class="pan-container">
+
+    <% if @article.previous_article %>
+      <%= link_to @article.previous_article, 'data-toggle' => 'tooltip', 'data-placement' => 'top', :title => @article.previous_article.title, class: 'btn nav-but pull-left' do %>
+        <i class="glyphicon glyphicon-arrow-left"></i> Предыдущая
+      <% end %>
+    <% else %>
+      <i class="glyphicon glyphicon-refresh btn nav-but pull-left"></i>
+    <% end %>
+
+    <% if current_user.try(:admin?) || current_user?(@article.user) %>
+      <%= link_to edit_article_path(@article), 'data-no-turbolink' => true, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-edit"></i> Редактировать
+      <% end %>
+      <%= link_to article_path(@article), method: :delete, data: {confirm: 'Серьезно?'}, class: 'btn nav-but' do %>
+        <i class="glyphicon glyphicon-trash"></i> Удалить
+      <% end %>
+    <% end %>
+
+    <%= link_to articles_path, class: 'btn nav-but' do %>
+      <i class="glyphicon glyphicon-list-alt"></i> К списку
+    <% end %>
+
+    <% if @article.next_article %>
+      <%= link_to @article.next_article, 'data-toggle' => 'tooltip', 'data-placement' => 'top', :title => @article.next_article.title, class: 'btn nav-but pull-right' do %>
+        Следующая <i class="glyphicon glyphicon-arrow-right"></i>
+      <% end %>
+    <% else %>
+      <i class="glyphicon glyphicon-refresh btn nav-but pull-right"></i>
+    <% end %>
+
+  </div>
+</nav>

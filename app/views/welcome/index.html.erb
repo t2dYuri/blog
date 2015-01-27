@@ -1,22 +1,25 @@
 <% if logged_in? %>
+
   <div class="row">
-  <div class="col-md-4">
-    <%= render 'shared/current_user_info' %>
+    <div class="col-md-4">
+      <%= render 'shared/current_user_info' %>
+    </div>
+    <div class="col-md-8">
+      <h3>Последние материалы от друзей</h3>
+      <%#= render 'shared/feed' %>
+      <%#= render 'articles/all_articles' %>
+      <%#= will_paginate @articles, :param_name => 'articles_page', class: 'center' %>
+    </div>
   </div>
-  <div class="col-md-8">
-    <h3>Последние материалы от друзей</h3>
-    <%#= render 'shared/feed' %>
-    <%#= render 'articles/all_articles' %>
-    <%#= will_paginate @articles, :param_name => 'articles_page', class: 'center' %>
-  </div>
-</div>
+
 <% else %>
 
-<h1>BloGG</h1>
+  <h2 class="text-center bg-header">Учебно-тестовый BloGG</h2>
   <%= render 'articles/all_articles' %>
   <%= will_paginate @articles, class: 'center' %>
 <hr>
-<%= link_to 'Статьи', articles_path, class: 'btn-main' %>
-<%= link_to 'Статьи', articles_path, class: 'btn btn-default' %>
+<%= link_to 'Проверка', articles_path, class: 'btn-main' %>
+<%= link_to 'Проверка', articles_path, class: 'btn btn-primary' %>
+<%= link_to 'Проверка', articles_path, class: 'btn btn-default' %>
 
 <% end %>
