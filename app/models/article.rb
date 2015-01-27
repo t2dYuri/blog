@@ -18,4 +18,15 @@ class Article < ActiveRecord::Base
     Article.previous(self.updated_at).first
   end
 
+  def self.search(query)
+    if query.present?
+      basic_search(query)
+    else
+      all
+    end
+  end
+
+  def self.searchable_language
+    'russian'
+  end
 end
