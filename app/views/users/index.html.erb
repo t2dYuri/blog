@@ -3,13 +3,14 @@
 
   <div class="col-md-4 my-art-list">
     <ul class="list-unstyled">
-      <%= render @users.order('created_at ASC') %>
+      <%= render @users.order('created_at asc') %>
+      <%#= render @users.sort_by { @articles.count }.reverse %>
     </ul>
-    <%= will_paginate @users, :param_name => 'users_page', class: 'center' %>
+    <%= will_paginate @users, param_name: 'users_page', class: 'center' %>
   </div>
 
   <div class="col-md-8 my-art-list">
     <%= render 'articles/all_articles' %>
-    <%= will_paginate @articles, :param_name => 'articles_page', class: 'center' %>
+    <%= will_paginate @articles, param_name: 'articles_page', class: 'center' %>
   </div>
 </div>

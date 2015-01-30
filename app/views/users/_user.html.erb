@@ -1,6 +1,6 @@
-<% zebra = cycle('#EEEEEE', '#FFFFFF') %>
+<% zebra = cycle('#FFFFFF', '#EEEEEE' ) %>
   <li class="li-zebra" style="background: <%= zebra %>">
-    <%= gravatar_for user, size: 50 %>
+    <%= gravatar_for user, size: 40 %>
 
     <span class="pull-right">
       <%= link_to user, class: 'show-but' do %>
@@ -20,6 +20,6 @@
       <% end %>
     </span>
 
-    <h4><%= link_to user.name, user %></h4>
-    Зарегистрирован: <%= user.created_at.strftime '%d-%m-%Y в %H:%M' %>
+    <div><strong><%= link_to user.name, user %></strong></div>
+    <small>Материалов: <strong><%= user.articles.count %></strong></small>
   </li>

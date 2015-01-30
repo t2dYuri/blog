@@ -4,13 +4,15 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:users_page], :per_page => 10)
-    @articles = Article.paginate(page: params[:articles_page], :per_page => 10)
+    @users = User.where(activated: true).page(params[:users_page]).per_page(10)
+    @articles = Article.page(params[:articles_page]).per_page(10)
   end
 
   def show
       @user = User.find(params[:id])
-      @articles = @user.articles.paginate(page: params[:page], :per_page => 10)
+      @articles = @user.articles.page(params[:articles_page]).per_page(10)
+      @followers = @user.followers.page(params[:followers_page]).per_page(10)
+      @following = @user.following.page(params[:following_page]).per_page(10)
   end
 
   def new

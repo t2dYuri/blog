@@ -22,7 +22,7 @@ User.create!(name: 'Юрик тестовый пользователь',
              activated_at: Time.zone.now)
 
 
-10.times do |n|
+50.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = 'password'
@@ -34,10 +34,17 @@ User.create!(name: 'Юрик тестовый пользователь',
                activated_at: Time.zone.now)
 end
 
-# users = User.order(:created_at).take(5)
-# 11.times do
-#   characters = Faker::Lorem.characters(20)
-#   sentence = Faker::Lorem.sentence(5)
-#   paragraph = Faker::Lorem.paragraph(2)
-#   users.each { |user| user.articles.create!(title: characters, descroption: sentence, text: paragraph) }
-# end
+users = User.order(:created_at).take(5)
+20.times do
+  filltitle = Faker::Lorem.sentence
+  filldescription = Faker::Lorem.paragraph(7)
+  filltext = Faker::Lorem.paragraph(20)
+  users.each { |user| user.articles.create!(title: filltitle, description: filldescription, text: filltext) }
+end
+
+users = User.all
+user  = users.first
+following = users[2..30]
+followers = users[3..20]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

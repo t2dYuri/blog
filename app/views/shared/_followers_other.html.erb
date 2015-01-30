@@ -1,0 +1,21 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel">
+    <div class="panel-heading" role="tab" id="headingFollowers">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFollowers" aria-expanded="true" aria-controls="collapseFollowers">
+          У пользователя <span id="followers"><%= @user.followers.count %></span> подписчиков
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFollowers" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFollowers">
+      <div class="panel-body">
+        <% if @followers.any? %>
+          <ul id="userslist" class="list-unstyled">
+            <%= render @followers %>
+          </ul>
+          <%= will_paginate @followers, param_name: 'followers_page', class: 'center' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,8 @@ $(function(){
             $(canvasId).remove();
             width = $(window).width();
             height = $('html').height();
+            if (height < $(window).height())
+              height = $(window).height();
             canvas = $('<canvas id="' + canvasId + '" width="' + width + '" height="' + height + '"></canvas>');
             $('body').append(canvas);
             canvas.css({'position': 'absolute', 'z-index': 99998, 'top': 0, 'left': 0, 'bottom': 0, 'right': 0});
@@ -20,7 +22,7 @@ $(function(){
             canvas.height = height;
             context = canvas[0].getContext("2d");
             context.fillStyle = settings.color;
-            context.globalAlpha = 0.3;
+            context.globalAlpha = 0.6;
             context.rect(0, 0, width, height);
             context.fill();
             canvas.show();

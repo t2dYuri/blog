@@ -3,36 +3,18 @@
 
   <div class="col-md-4">
     <% if current_user?(@user) %>
-      <%= render 'shared/current_user_info' %>
+      <%= render 'shared/user_info_current' %>
+      <%= render 'shared/followers_current' %>
     <% else %>
-      <div class="panel">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <%= gravatar_for @user, size: 100 %>
-            <%= @user.name %>
-            <% if current_user.admin? || current_user?(@user) %>
-              <%= link_to edit_user_path(@user), class: 'edit-but pull-right' do %>
-                <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
-              <% end %>
-            <% end %>
-          </h3>
-          <div class="center">Дата регистрации: <%= @user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
-        </div>
-        <div class="panel-body">
-          <div>Материалов: <%= @user.articles.count %>
-            <%= link_to 'Подписаться', articles_path, class: 'btn-main pull-right' %>
-          </div>
-          <p>Читателей: 99999</p>
-          <p><%= @user.email %></p>
-        </div>
-      </div>
+      <%= render 'shared/user_info_other' %>
+      <%= render 'shared/followers_other' %>
     <% end %>
   </div>
 
   <div class="col-md-8 my-art-list">
     <% if @user.articles.any? %>
       <%= render 'articles/all_my_articles_list' %>
-      <%= will_paginate @articles, class: 'center' %>
+      <%= will_paginate @articles, param_name: 'articles_page', class: 'center' %>
     <% end %>
   </div>
 </div>

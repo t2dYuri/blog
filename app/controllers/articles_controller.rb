@@ -4,12 +4,12 @@ class ArticlesController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.search(params[:query]).paginate(page: params[:page], :per_page => 10)
+    @articles = Article.search(params[:query]).page(params[:page]).per_page(10)
   end
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments.paginate(page: params[:page], :per_page => 10)
+    @comments = @article.comments.page(params[:page]).per_page(10)
   end
 
   def new

@@ -1,0 +1,18 @@
+<div class="panel">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= gravatar_for @user, size: 100 %>
+      <%= @user.name %>
+      <% if current_user.admin? || current_user?(@user) %>
+        <%= link_to edit_user_path(@user), class: 'edit-but pull-right' do %>
+          <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
+        <% end %>
+      <% end %>
+    </h3>
+    <div class="center">Материалов: <strong><%= @user.articles.count %></strong></div>
+  </div>
+  <div class="panel-body">
+    <%= render 'users/follow_form' %><br><br>
+    <div>Дата регистрации: <%= @user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
+  </div>
+</div>

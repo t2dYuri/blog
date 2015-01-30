@@ -7,14 +7,11 @@
         <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
       <% end %>
     </h3>
-    <div class="center">Дата регистрации: <%= current_user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
+    <div class="center">Материалов: <strong><%= current_user.articles.count %></strong></div>
   </div>
   <div class="panel-body">
-    <div>
-      Материалов: <%= current_user.articles.count %>
-      <%= link_to 'Написать статью', new_article_path, class: 'btn-main pull-right', 'data-no-turbolink' => true %>
-    </div>
-    <p>Читателей: 99999</p>
-    <p><%= current_user.email %></p>
+      <%= link_to 'Написать статью', new_article_path, class: 'btn-main btn-profile pull-right', 'data-no-turbolink' => true %>
+  <br><br>
+    <div>Дата регистрации: <%= current_user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
   </div>
 </div>

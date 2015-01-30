@@ -1,0 +1,12 @@
+<div id="follow_form">
+  <% if current_user.following?(@user) %>
+    <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: { method: :delete }, remote: true) do |f| %>
+      <%= f.submit 'Отписаться', class: 'btn btn-default btn-profile pull-right' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.active_relationships.build(followed_id: @user.id), remote: true) do |f| %>
+      <div><%= hidden_field_tag :followed_id, @user.id %></div>
+      <%= f.submit 'Подписаться', class: 'btn btn-main btn-profile pull-right' %>
+    <% end %>
+  <% end %>
+</div>

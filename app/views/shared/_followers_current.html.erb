@@ -1,0 +1,41 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel">
+    <div class="panel-heading" role="tab" id="headingFollowers">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFollowers" aria-expanded="true" aria-controls="collapseFollowers">
+          У меня <span id="followers"><%= current_user.followers.count %></span> подписчиков
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFollowers" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFollowers">
+      <div class="panel-body">
+        <% if @followers.any? %>
+          <ul class="list-unstyled">
+            <%= render @followers %>
+          </ul>
+          <%= will_paginate @followers, param_name: 'followers_page', class: 'center' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-heading" role="tab" id="headingFollowing">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFollowing" aria-expanded="false" aria-controls="collapseFollowing">
+          Я читаю <%= current_user.following.count %> чел.
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFollowing" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFollowing">
+      <div class="panel-body">
+        <% if @following.any? %>
+          <ul class="list-unstyled">
+            <%= render @following %>
+          </ul>
+          <%= will_paginate @following, param_name: 'following_page', class: 'center' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
