@@ -13,8 +13,9 @@
   </div>
 <% else %>
   <h2 class="text-center bg-header">Учебно-тестовый BloGG</h2>
+  <div id="art-ajax-paginate">
   <%= render 'articles/all_articles' %>
-  <%= will_paginate @articles, class: 'center' %>
+  </div>
 <hr>
 <%= link_to 'Проверка', articles_path, class: 'btn-main' %>
 <%= link_to 'Проверка', articles_path, class: 'btn btn-primary' %>

@@ -1,0 +1,13 @@
+<% if current_user?(@user) %>
+  $("#followers-curr").html('<%= escape_javascript render @followers %>');
+  $("#following-curr").html('<%= escape_javascript render @following %>');
+  $("#awp-following").html('<%= ajax_will_paginate @following, param_name: 'following_page', class: 'paginator' %>');
+<% else %>
+  $("#userslist").html('<%= escape_javascript render @followers %>');
+<% end %>
+
+$("#awp-followers").html('<%= ajax_will_paginate @followers, param_name: 'followers_page', class: 'paginator' %>');
+
+<% if @user.articles.any? %>
+  $("#art-ajax-paginate").html('<%= escape_javascript render 'articles/all_my_articles_list' %>');
+<% end %>

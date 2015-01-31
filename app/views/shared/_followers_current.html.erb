@@ -10,10 +10,12 @@
     <div id="collapseFollowers" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFollowers">
       <div class="panel-body">
         <% if @followers.any? %>
-          <ul class="list-unstyled">
+          <ul id="followers-curr" class="list-unstyled">
             <%= render @followers %>
           </ul>
-          <%= will_paginate @followers, param_name: 'followers_page', class: 'center' %>
+          <div id="awp-followers">
+          <%= ajax_will_paginate @followers, param_name: 'followers_page', class: 'paginator' %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -30,10 +32,12 @@
     <div id="collapseFollowing" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFollowing">
       <div class="panel-body">
         <% if @following.any? %>
-          <ul class="list-unstyled">
+          <ul id="following-curr" class="list-unstyled">
             <%= render @following %>
           </ul>
-          <%= will_paginate @following, param_name: 'following_page', class: 'center' %>
+          <div id="awp-following">
+          <%= ajax_will_paginate @following, param_name: 'following_page', class: 'paginator' %>
+          </div>
         <% end %>
       </div>
     </div>

@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
       @followers = current_user.followers.page(params[:followers_page]).per_page(10)
       @following = current_user.following.page(params[:following_page]).per_page(10)
     end
-    @articles = Article.all.page(params[:page]).per_page(10)
+    @articles = Article.all.page(params[:articles_page]).per_page(10)
   end
 
   def help

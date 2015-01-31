@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.search(params[:query]).page(params[:page]).per_page(10)
+    @articles = Article.search(params[:query]).page(params[:articles_page]).per_page(10)
   end
 
   def show

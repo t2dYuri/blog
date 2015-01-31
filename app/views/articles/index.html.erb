@@ -1,18 +1,5 @@
 <% provide(:title, 'Все статьи') %>
-<!--<div class="row">-->
-  <!--<aside class="col-md-4">-->
-    <!--<section>-->
-      <!--<h2 class="text-center bg-header">User</h2>-->
-      <!--<div>-->
-        <!--ЗАГЛУШКА ДЛЯ ДАННЫХ ПОЛЬЗОВАТЕЛЯ-->
-      <!--</div>-->
-    <!--</section>-->
-  <!--</aside>-->
-  <!--<div class="col-md-8">-->
-    <!---->
-    <!---->
-  <!--</div>-->
-<!--</div>-->
 <h2 class="text-center bg-header">Все статьи</h2>
-<%= render 'all_articles' %>
-<%= will_paginate @articles, class: 'center' %>
+<div id="art-ajax-paginate">
+  <%= render 'all_articles' %>
+</div>

@@ -9,12 +9,14 @@
     </div>
     <div id="collapseFollowers" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFollowers">
       <div class="panel-body">
-        <% if @followers.any? %>
+        <%# if @followers.any? %>
           <ul id="userslist" class="list-unstyled">
             <%= render @followers %>
           </ul>
-          <%= will_paginate @followers, param_name: 'followers_page', class: 'center' %>
-        <% end %>
+          <div id="awp-followers">
+            <%= ajax_will_paginate @followers, param_name: 'followers_page', class: 'paginator' %>
+          </div>
+        <%# end %>
       </div>
     </div>
   </div>

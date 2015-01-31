@@ -121,7 +121,6 @@
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.9, ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="binding_of_caller (v0.7.2, ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.3.1.0, ruby-2.0.0-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bootstrap-will_paginate (v0.0.10, ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.2, ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.7.7, ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v3.5.1, ruby-2.0.0-p195) [gem]" level="application" />

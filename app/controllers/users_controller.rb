@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.where(activated: true).page(params[:users_page]).per_page(10)
+    @users = User.where(activated: true).page(params[:users_page]).per_page(15)
     @articles = Article.page(params[:articles_page]).per_page(10)
   end
 
@@ -58,13 +58,11 @@ class UsersController < ApplicationController
 
   # Before filters
 
-  # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user) || current_user.admin?
   end
 
-  # Confirms an admin user.
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end

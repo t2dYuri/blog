@@ -26,3 +26,4 @@ $(function () {
 $(function() {
     $("#reg-login-mod").modal();
 });
+

@@ -13,8 +13,9 @@
 
   <div class="col-md-8 my-art-list">
     <% if @user.articles.any? %>
-      <%= render 'articles/all_my_articles_list' %>
-      <%= will_paginate @articles, param_name: 'articles_page', class: 'center' %>
+      <div id="art-ajax-paginate">
+        <%= render 'articles/all_my_articles_list' %>
+      </div>
     <% end %>
   </div>
 </div>
