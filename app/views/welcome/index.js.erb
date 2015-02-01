@@ -6,3 +6,5 @@
 <% else %>
   $("#art-ajax-paginate").html('<%= escape_javascript render 'articles/all_articles' %>');
 <% end %>
+
+$("[data-toggle=tooltip]").tooltip();

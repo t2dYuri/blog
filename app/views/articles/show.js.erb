@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  $("[data-toggle=tooltip]").tooltip();
+//return from comment -create form
+  $("#comm_form").html('<%= escape_javascript render 'comments/form' %>');
+  $("#comm-count").html('<%= @article.comments.count %>');
+<% end %>
+  $("#comm-ajax-paginate").html('<%= escape_javascript render 'comments/comm_list' %>');

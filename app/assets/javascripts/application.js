@@ -17,8 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
@@ -26,4 +24,3 @@ $(function () {
 $(function() {
     $("#reg-login-mod").modal();
 });
-

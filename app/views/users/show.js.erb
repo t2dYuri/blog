@@ -11,3 +11,5 @@ $("#awp-followers").html('<%= ajax_will_paginate @followers, param_name: 'follow
 <% if @user.articles.any? %>
   $("#art-ajax-paginate").html('<%= escape_javascript render 'articles/all_my_articles_list' %>');
 <% end %>
+
+$("[data-toggle=tooltip]").tooltip();
