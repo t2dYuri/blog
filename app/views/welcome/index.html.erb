@@ -4,11 +4,12 @@
       <%= render 'shared/user_info_current' %>
       <%= render 'shared/followers_current' %>
     </div>
-    <div class="col-md-8">
-      <h3>Последние материалы от друзей</h3>
-      <%#= render 'shared/feed' %>
-      <%#= render 'articles/all_articles' %>
-      <%#= will_paginate @articles, :param_name => 'articles_page', class: 'center' %>
+    <div class="col-md-8 my-art-list">
+      <% if @articles.any? %>
+        <div id="art-ajax-paginate">
+          <%= render 'articles/all_articles' %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% else %>

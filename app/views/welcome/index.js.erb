@@ -3,8 +3,6 @@
   $("#awp-followers").html('<%= ajax_will_paginate @followers, param_name: 'followers_page', class: 'paginator' %>');
   $("#following-curr").html('<%= escape_javascript render @following %>');
   $("#awp-following").html('<%= ajax_will_paginate @following, param_name: 'following_page', class: 'paginator' %>');
-<% else %>
-  $("#art-ajax-paginate").html('<%= escape_javascript render 'articles/all_articles' %>');
 <% end %>
-
+$("#art-ajax-paginate").html('<%= escape_javascript render 'articles/all_articles' %>');
 $("[data-toggle=tooltip]").tooltip();

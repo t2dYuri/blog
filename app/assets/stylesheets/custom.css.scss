@@ -145,6 +145,11 @@ section {
 .btn-profile {
   width: 50%;
 }
+.btn-unfollow {
+  @extend .btn-default;
+  width: 50%;
+  &:hover { background-color: #ffedef; }
+}
 .show-but {
   margin: 0 0 0 5px;
   :hover, :active, :focus {
