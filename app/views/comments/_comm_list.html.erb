@@ -1,7 +1,8 @@
 <%= render html: '<center>Пока что никто не комментировал эту статью</center>'.html_safe unless @comments.count > 0 %>
 <% @comments.each do |comment| %>
   <ul class="list-unstyled">
-    <li class="li-comm">
+    <% zebra = cycle('#FFFFFF', '#EEEEEE') %>
+    <li class="li-zebra" style="background: <%= zebra %>">
       <em><small><%= comment.created_at.strftime '%d-%m-%Y в %H:%M' %></small></em>
       <% if current_user.try(:admin?) || current_user.try(:name) == comment.commenter %>
         <%= link_to article_comment_path(comment.article.id,comment.id), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but pull-right' do %>

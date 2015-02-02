@@ -1,13 +1,9 @@
 <ul class="list-unstyled">
-  <% @articles.order('updated_at DESC').each do |article| %>
+  <% @articles.each do |article| %>
     <% zebra = cycle('#EEEEEE', '#FFFFFF') %>
     <li class="li-zebra" style="background: <%= zebra %>">
-      <h4>
-        <%= link_to truncate(article.title, length: 60), article_path(article) %>
-        <small>
-          <em><%= article.updated_at.strftime '%d-%m-%Y в %H:%M' %></em>
-        </small>
         <span class="pull-right">
+          <span class="art-date"><%= article.updated_at.strftime '%d-%m-%Y в %H:%M' %></span>
           <%= link_to article_path(article), class: 'show-but' do %>
             <i class="glyphicon glyphicon-eye-open" data-toggle="tooltip" data-placement="top" title="Читать статью"></i>
           <% end %>
@@ -20,10 +16,8 @@
             <% end %>
           <% end %>
         </span>
-      </h4>
-      <span>
-        <%= truncate(strip_tags(article.description), length: 220) %>
-      </span>
+      <h4><%= link_to truncate(article.title, length: 60), article_path(article) %></h4>
+      <span><%= truncate(strip_tags(article.description), length: 250) %></span>
     </li>
   <% end %>
 </ul>

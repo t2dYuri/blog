@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$max-body-width: 1400px;
+$max-body-width: 1336px;
 $dark-blue: #00558f;
 $link-color: #00558f;
 $link-hover: #0079b9;
@@ -25,21 +25,20 @@ a:link, a:visited {
   }
 }
 body {
-  background-image: asset-url("back16.jpg");
+  background-image: asset-url("back3.jpg");
 }
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 h1, h2 {
-//  letter-spacing: -1px;
   text-align: center;
 }
 h2 {
   margin-top: 15px;
 }
 h4, h5, h6 {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
@@ -68,7 +67,6 @@ section {
   border-radius: 6px;
 }
 .f-block {
-  @include e-shadow;
   padding: 10px;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 6px;
@@ -151,19 +149,19 @@ section {
   &:hover { background-color: #ffedef; }
 }
 .show-but {
-  margin: 0 0 0 5px;
+  margin: 0 0 0 3px;
   :hover, :active, :focus {
     color: #04cb3a;
   }
 }
 .edit-but {
-  margin: 0 0 0 5px;
+  margin: 0 0 0 3px;
   :hover, :active, :focus {
     color: #ffc700;
   }
 }
 .del-but {
-  margin: 0 0 0 5px;
+  margin: 0 0 0 3px;
   :hover, :active, :focus {
     color: #dd0000;
   }
@@ -231,32 +229,29 @@ section {
     color: $pan-text-hover;
   }
 }
-/* --- Articles list --- */
 .my-art-list {
   margin-top: 10px;
+}
+.art-date {
+  font-size: smaller;
+  margin-right: 10px;
+  border-bottom: 1px solid;
+  border-color: rgba(0,0,0,0.2);
 }
 .li-zebra {
   @include e-shadow;
   margin-top: 5px;
-  padding: 5px 10px;
-  border-radius: 6px;
-}
-/* --- Comments ---*/
-.li-comm {
-  @include e-shadow;
-  background-color: white;
-  margin-bottom: 5px;
   padding: 5px;
   border-radius: 6px;
 }
-/* --- User --- */
 .gravatar {
   float: left;
-  margin-right: 10px;
+  margin-right: 5px;
+  border-radius: 6px;
 }
 /* --- Modal Windows --- */
 .reg-login-mod {
-  background-image: asset-url("back16.jpg");
+  background-image: asset-url("back3.jpg");
 }
 .close {
   opacity: 1;
@@ -284,7 +279,6 @@ section {
 /* --- Pagination ---*/
 .paginator {
   margin-top: 10px;
-  margin-bottom: 5px;
   text-align: center;
   font-weight: bold;
   text-shadow: 1px 1px 2px #000000;

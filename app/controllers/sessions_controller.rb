@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
         # redirect_back_or user
         redirect_back_or root_url
       else
-        message  = 'Учетная запись не активирована. '
-        message += 'Ссылка с активациией отправлена на Ваш email'
+        message  = 'Учетная запись не активирована.'
+        message += 'Ссылка с активациией отправлена на Ваш email.'
         flash[:warning] = message
         redirect_to root_url
       end

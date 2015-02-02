@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = 'Пожалуйста, проверьте Ваш email для активации учетной записи.'
+      flash[:info] = 'Пожалуйста, проверьте Ваш email для активации учетной записи. Может занять до 30 минут (иногда больше, но обычно меньше :)'
       redirect_to root_url
     else
       render 'new'

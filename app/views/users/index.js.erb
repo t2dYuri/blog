@@ -1,4 +1,4 @@
-$("#users-ajax").html('<%= escape_javascript render @users.order('created_at asc') %>');
+$("#users-ajax").html('<%= escape_javascript render @users %>');
 $("#awp-users").html('<%= ajax_will_paginate @users, param_name: 'users_page', class: 'paginator' %>');
 $("#art-ajax-paginate").html('<%= escape_javascript render 'articles/all_articles' %>');
 $("[data-toggle=tooltip]").tooltip();

@@ -1,16 +1,13 @@
 <% provide(:title, 'Все пользователи') %>
 <div class="row">
-
   <div class="col-md-4 my-art-list">
     <ul id="users-ajax" class="list-unstyled">
-      <%= render @users.order('created_at asc') %>
-      <%#= render @users.sort_by { @articles.count }.reverse %>
+      <%= render @users %>
     </ul>
     <div id="awp-users">
       <%= ajax_will_paginate @users, param_name: 'users_page', class: 'paginator' %>
     </div>
   </div>
-
   <div id="art-ajax-paginate" class="col-md-8 my-art-list">
     <%= render 'articles/all_articles' %>
   </div>

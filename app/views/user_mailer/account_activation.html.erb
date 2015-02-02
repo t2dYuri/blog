@@ -4,4 +4,4 @@
 
 <p>Добро пожаловать на проект "BloGG". Пожалуйста, нажмите на ссылку ниже для активации Вашей учетной записи:</p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<%= link_to 'Активировать', edit_account_activation_url(@user.activation_token, email: @user.email) %>

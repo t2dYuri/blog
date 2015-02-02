@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  default_scope -> { order(created_at: :desc) }
   has_many :articles, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
@@ -44,9 +45,9 @@ class User < ActiveRecord::Base
   end
 
   def activate
-    # update_columns(activated: true, activated_at: Time.zone.now)
-    update_attribute(:activated,    true)
-    update_attribute(:activated_at, Time.zone.now)
+    update_columns(activated: true, activated_at: Time.zone.now)
+    # update_attribute(:activated,    true)
+    # update_attribute(:activated_at, Time.zone.now)
   end
 
   def send_activation_email
@@ -55,9 +56,9 @@ class User < ActiveRecord::Base
 
   def create_reset_digest
     self.reset_token = User.new_token
-    # update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
-    update_attribute(:reset_digest,  User.digest(reset_token))
-    update_attribute(:reset_sent_at, Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
+    # update_attribute(:reset_digest,  User.digest(reset_token))
+    # update_attribute(:reset_sent_at, Time.zone.now)
   end
 
   def send_password_reset_email
