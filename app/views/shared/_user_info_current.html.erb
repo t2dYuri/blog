@@ -12,6 +12,8 @@
   <div class="panel-body">
       <%= link_to 'Написать статью', new_article_path, class: 'btn-main btn-profile pull-right', 'data-no-turbolink' => true %>
   <br><br>
+    <%= image_tag current_user.avatar.url if current_user.avatar? %>
+    <%= link_to 'Удалить автарку', current_user.avatar.url, method: :delete, data: {confirm: 'Серьезно?'}  %>
     <div>Дата регистрации: <%= current_user.created_at.strftime '%d-%m-%Y в %H:%M' %></div>
   </div>
 </div>

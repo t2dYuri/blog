@@ -10,11 +10,14 @@ class User < ActiveRecord::Base
   before_save   :downcase_email
   before_create :create_activation_digest
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :name, presence: true, length: { maximum: 40 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 60 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  validate  :avatar_size
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -95,5 +98,11 @@ class User < ActiveRecord::Base
   def create_activation_digest
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+
+  def avatar_size
+    if avatar.size > 1.megabytes
+      errors.add(:avatar, 'Аватар должен весить меньше 1 МБ')
+    end
   end
 end
