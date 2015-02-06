@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
   validate  :avatar_size
+  validates :about_me, length: { maximum: 200 }
 
   # Returns the hash digest of the given string.
   def User.digest(string)

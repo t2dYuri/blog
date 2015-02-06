@@ -46,9 +46,9 @@ input, textarea, select, .uneditable-input {
 textarea {
   resize: vertical;
 }
-section {
-  overflow: auto;
-}
+//section {
+//  overflow: auto;
+//}
 .center {
   text-align: center;
 }
@@ -244,11 +244,6 @@ section {
   padding: 5px;
   border-radius: 6px;
 }
-.gravatar {
-  float: left;
-  margin-right: 5px;
-  border-radius: 6px;
-}
 .avatar {
   float: left;
   margin-right: 5px;
@@ -257,7 +252,6 @@ section {
 .file-upload {
   @extend .form-control;
   width: 81%;
-  float: right;
 }
 /* --- Modal Windows --- */
 .reg-login-mod {

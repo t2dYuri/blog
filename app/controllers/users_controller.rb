@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :remove_avatar, :remote_avatar_url)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :birth_date, :avatar, :avatar_cache, :remove_avatar, :remote_avatar_url)
   end
 
   # Before filters
