@@ -1,6 +1,7 @@
 <% zebra = cycle('#FFFFFF', '#EEEEEE' ) %>
   <li class="li-zebra" style="background: <%= zebra %>">
-    <%= gravatar_for user, size: 40 %>
+    <%#= gravatar_for user, size: 40 %>
+    <%= image_tag user.avatar.url(:icon), class: 'avatar' %>
 
     <span class="pull-right">
       <%= link_to user, class: 'show-but' do %>

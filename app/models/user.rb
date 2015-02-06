@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   attr_accessor :remember_token, :activation_token, :reset_token
+
   before_save   :downcase_email
   before_create :create_activation_digest
 
@@ -101,8 +102,8 @@ class User < ActiveRecord::Base
   end
 
   def avatar_size
-    if avatar.size > 1.megabytes
-      errors.add(:avatar, 'Аватар должен весить меньше 1 МБ')
+    if avatar.size > 100.kilobytes
+      errors.add(:avatar, 'Аватар должен весить меньше 100 Кб')
     end
   end
 end

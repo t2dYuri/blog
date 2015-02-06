@@ -34,7 +34,7 @@ User.create!(name: 'Пользователь Будулай',
                activated_at: Time.zone.now)
 end
 
-users = User.order(:created_at).take(6)
+users = User.reorder(created_at: :asc).take(6)
 20.times do
   filltitle = Faker::Lorem.sentence
   filldescription = Faker::Lorem.paragraph(7)

@@ -1,7 +1,7 @@
 <div class="panel">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= gravatar_for @user, size: 100 %>
+      <%= image_tag @user.avatar.url, class: 'avatar' %>
       <%= @user.name %>
       <% if current_user.admin? || current_user?(@user) %>
         <%= link_to edit_user_path(@user), class: 'edit-but pull-right' do %>

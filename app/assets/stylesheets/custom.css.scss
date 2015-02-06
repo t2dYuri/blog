@@ -249,6 +249,16 @@ section {
   margin-right: 5px;
   border-radius: 6px;
 }
+.avatar {
+  float: left;
+  margin-right: 5px;
+  border-radius: 6px;
+}
+.file-upload {
+  @extend .form-control;
+  width: 81%;
+  float: right;
+}
 /* --- Modal Windows --- */
 .reg-login-mod {
   background-image: asset-url("back3.jpg");
