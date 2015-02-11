@@ -5,5 +5,5 @@ CarrierWave.configure do |config|
   config.ftp_passwd = 'P0likilop'
   config.ftp_folder = '/www/rapidsoft.org/images/blogg'
   config.ftp_url = 'http://rapidsoft.org/images/blogg'
-  config.ftp_passive = false
+  config.ftp_passive = true
 end
