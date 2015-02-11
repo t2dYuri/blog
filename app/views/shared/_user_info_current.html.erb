@@ -13,13 +13,13 @@
       <%= link_to 'Написать статью', new_article_path, class: 'btn-main btn-profile pull-right', 'data-no-turbolink' => true %>
     <br><hr>
 
-    <% if current_user.birth_date %>
+    <% if current_user.birth_date? %>
       <p class="t-block">Дата рождения: <strong><%= current_user.birth_date.strftime '%d-%m-%Y' %></strong></p>
     <% end %>
 
     <p class="t-block">Дата регистрации: <strong><%= current_user.created_at.strftime '%d-%m-%Y в %H:%M' %></strong></p>
 
-    <% if current_user.about_me %>
+    <% if current_user.about_me? %>
       <%= content_tag :p, current_user.about_me, class: 'li-zebra'  %>
     <% end %>
   </div>

@@ -15,13 +15,13 @@
     <%= render 'users/follow_form' %>
     <br><hr>
 
-    <% if @user.birth_date %>
+    <% if @user.birth_date? %>
       <p class="t-block">Дата рождения: <strong><%= @user.birth_date.strftime '%d-%m-%Y' %></strong></p>
     <% end %>
 
     <p class="t-block">Дата регистрации: <strong><%= @user.created_at.strftime '%d-%m-%Y в %H:%M' %></strong></p>
 
-    <% if @user.about_me %>
+    <% if @user.about_me? %>
       <%= content_tag :p, @user.about_me, class: 'li-zebra'  %>
     <% end %>
   </div>

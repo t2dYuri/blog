@@ -4,12 +4,10 @@
     <li class="li-zebra" style="background: <%= zebra %>">
       <% if logged_in? %>
         <%= link_to article.user, 'data-toggle' => 'tooltip', 'data-placement' => 'top', :title => "Автор: #{article.user.name}" do %>
-          <%#= gravatar_for article.user, size: 40 %>
           <%= image_tag article.user.avatar.url(:icon), class: 'avatar' %>
         <% end %>
       <% else %>
         <%= content_tag :span, 'data-toggle' => 'tooltip', 'data-placement' => 'top', :title => "Автор: #{article.user.name}" do %>
-          <%#= gravatar_for article.user, size: 40 %>
           <%= image_tag article.user.avatar.url(:icon), class: 'avatar' %>
         <% end %>
       <% end %>

@@ -46,9 +46,6 @@ input, textarea, select, .uneditable-input {
 textarea {
   resize: vertical;
 }
-//section {
-//  overflow: auto;
-//}
 .center {
   text-align: center;
 }
@@ -71,7 +68,7 @@ textarea {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 6px;
 }
-.mce-container {
+.mce-tinymce {
   @include e-shadow;
 }
 .bg-header {

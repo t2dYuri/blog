@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  default_scope -> { order(created_at: :desc) }
+  # default_scope -> { order(created_at: :desc) }
   has_many :articles, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
@@ -8,18 +8,20 @@ class User < ActiveRecord::Base
 
   attr_accessor :remember_token, :activation_token, :reset_token
 
-  before_save   :downcase_email
+  before_save   :downcase_email, :nil_if_blank
   before_create :create_activation_digest
-
-  mount_uploader :avatar, AvatarUploader
 
   validates :name, presence: true, length: { maximum: 40 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 60 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
+  # validates :password, length: { minimum: 6 }, if: :password
   validates :password, length: { minimum: 6 }
+
   validate  :avatar_size
   validates :about_me, length: { maximum: 200 }
+
+  mount_uploader :avatar, AvatarUploader
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -105,6 +107,12 @@ class User < ActiveRecord::Base
   def avatar_size
     if avatar.size > 100.kilobytes
       errors.add(:avatar, 'Аватар должен весить меньше 100 Кб')
+    end
+  end
+
+  def nil_if_blank
+    self.class.columns.select { |c| [:text, :string].include?(c.type) }.each do |column|
+      send("#{column.name}=", nil) if read_attribute(column.name).blank?
     end
   end
 end

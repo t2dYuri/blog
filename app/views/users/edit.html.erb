@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <%= form_for(@user, html: { multipart: true }) do |f| %>
-          <%= render 'shared/error_messages' %>
+          <%= render 'shared/error_messages', object: f.object %>
 
           <%= f.label :name, 'Ваше новое имя' %>
           <%= f.text_field :name, class: 'form-control' %>
@@ -41,7 +41,7 @@
         <% end %>
       </div>
       <div class="modal-footer center">
-        <span>Для подтверждения изменений необходимо ввести пароль</span>
+        <span>Для подтверждения изменений требуется ввести пароль</span>
       </div>
     </div>
   </div>

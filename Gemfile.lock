@@ -53,6 +53,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    carrierwave-ftp (0.2.8)
+      carrierwave (>= 0.6.2)
+      net-sftp (~> 2.1.2)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -175,6 +178,8 @@ GEM
     multi_json (1.10.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     nokogiri (1.6.5-x86-mingw32)
       mini_portile (~> 0.6.0)
@@ -271,6 +276,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   carrierwave
+  carrierwave-ftp
   coffee-rails (~> 4.1.0)
   faker
   fog

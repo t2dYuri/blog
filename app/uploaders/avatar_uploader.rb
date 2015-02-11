@@ -2,14 +2,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
-  storage :file
+  storage :ftp
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path([version_name, 'default.png'].compact.join('_'))
+    ActionController::Base.helpers.asset_path([version_name, 'default.jpg'].compact.join('_'))
     # [version_name, 'default.png'].compact.join('_')
     # "/images/" + [version_name, "default.png"].compact.join('_')
   end
