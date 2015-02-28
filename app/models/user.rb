@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 60 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
   # validates :password, length: { minimum: 6 }, if: :password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
 
   validate  :avatar_size
   validates :about_me, length: { maximum: 200 }
@@ -25,8 +25,7 @@ class User < ActiveRecord::Base
 
   # Returns the hash digest of the given string.
   def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-        BCrypt::Engine.cost
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
@@ -73,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def password_reset_expired?
-    reset_sent_at < 2.hours.ago
+    reset_sent_at < 3.hours.ago
   end
 
   def feed

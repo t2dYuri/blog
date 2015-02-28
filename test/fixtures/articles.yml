@@ -1,9 +1,73 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+art1:
+  title: "Test article one title"
+  description: "Test article one description"
+  text: "Test article one text"
+  created_at: <%= 20.minutes.ago %>
+  updated_at: <%= 10.minutes.ago %>
+  user: trend
 
-one:
-  title: MyString
-  text: MyText
+art2:
+  title: "Test article two title"
+  description: "Test article two description"
+  text: "Test article two text"
+  created_at: <%= 3.days.ago %>
+  updated_at: <%= 2.days.ago %>
+  user: trend
 
-two:
-  title: MyString
-  text: MyText
+art3:
+  title: "Test article three title"
+  description: "Test article three description"
+  text: "Test article three text"
+  created_at: <%= 2.hours.ago %>
+  updated_at: <%= 1.hour.ago %>
+  user: trend
+
+art4:
+  title: "Test article four title"
+  description: "Test article four description"
+  text: "Test article four text"
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  user: trend
+
+<% 20.times do |n| %>
+article_<%= n %>:
+  title: <%= Faker::Lorem.sentence %>
+  description: <%= Faker::Lorem.paragraph(2) %>
+  text: <%= Faker::Lorem.paragraph(3) %>
+  created_at: <%= 42.minutes.ago %>
+  updated_at: <%= 42.minutes.ago %>
+  user: trend
+<% end %>
+
+second_art1:
+  title: "Test second user, article one title"
+  description: "Test second user, article one description"
+  text: "Test second user, article one text"
+  created_at: <%= 25.days.ago %>
+  updated_at: <%= 25.days.ago %>
+  user: second
+
+second_art2:
+  title: "Test second user, article two title"
+  description: "Test second user, article two description"
+  text: "Test second user, article two text"
+  created_at: <%= 24.days.ago %>
+  updated_at: <%= 24.days.ago %>
+  user: second
+
+third_art1:
+  title: "Test third user, article one title"
+  description: "Test third user, article one description"
+  text: "Test third user, article one text"
+  created_at: <%= 15.days.ago %>
+  updated_at: <%= 15.days.ago %>
+  user: third
+
+third_art2:
+  title: "Test third user, article two title"
+  description: "Test third user, article two description"
+  text: "Test third user, article two text"
+  created_at: <%= 14.days.ago %>
+  updated_at: <%= 14.days.ago %>
+  user: third

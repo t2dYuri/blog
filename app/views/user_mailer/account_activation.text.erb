@@ -1,5 +1,3 @@
-Приветствуем, <%= @user.name %>
-
-Добро пожаловать на проект "BloGG". Пожалуйста, нажмите на ссылку ниже для активации Вашей учетной записи:
-
+Hi <%= @user.name %>,
+Welcome to BloGG! Please, Click the link below to activate your account:
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

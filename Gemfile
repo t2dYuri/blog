@@ -18,22 +18,19 @@ gem 'faker'
 gem 'carrierwave'
 gem 'carrierwave-ftp', :require => 'carrierwave/storage/ftp'
 gem 'mini_magick'
-gem 'fog'
+# gem 'fog'
 gem 'will_paginate'
 gem 'textacular'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring',      '1.1.3'
+end
+
+group :test do
+  gem 'minitest-reporters'
 end
 
 group :production do

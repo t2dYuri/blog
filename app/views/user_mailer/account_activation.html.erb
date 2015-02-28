@@ -1,7 +1,4 @@
-<h2>BloGG</h2>
-
-<p>Приветствуем, <%= @user.name %></p>
-
-<p>Добро пожаловать на проект "BloGG". Пожалуйста, нажмите на ссылку ниже для активации Вашей учетной записи:</p>
-
-<%= link_to 'Активировать', edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<h2>Yurik-BloGG</h2>
+<p>Hi <%= @user.name %>,</p>
+<p>Welcome to BloGG! Please, Click the link below to activate your account:</p>
+<%= link_to 'Account Activation link', edit_account_activation_url(@user.activation_token, email: @user.email) %>

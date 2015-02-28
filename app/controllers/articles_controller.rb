@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comments = @article.comments.page(params[:page]).per_page(10)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url
   end
 
   def new
@@ -42,7 +44,9 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to request.referrer || root_url
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_url
   end
 
   private
