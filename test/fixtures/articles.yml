@@ -2,24 +2,24 @@ art1:
   title: "Test article one title"
   description: "Test article one description"
   text: "Test article one text"
-  created_at: <%= 20.minutes.ago %>
-  updated_at: <%= 10.minutes.ago %>
+  created_at: <%= 30.minutes.ago %>
+  updated_at: <%= 30.minutes.ago %>
   user: trend
 
 art2:
   title: "Test article two title"
   description: "Test article two description"
   text: "Test article two text"
-  created_at: <%= 3.days.ago %>
-  updated_at: <%= 2.days.ago %>
+  created_at: <%= 20.minutes.ago %>
+  updated_at: <%= 10.minutes.ago %>
   user: trend
 
 art3:
   title: "Test article three title"
   description: "Test article three description"
   text: "Test article three text"
-  created_at: <%= 2.hours.ago %>
-  updated_at: <%= 1.hour.ago %>
+  created_at: <%= 10.minutes.ago %>
+  updated_at: <%= 5.minutes.ago %>
   user: trend
 
 art4:
@@ -30,7 +30,7 @@ art4:
   updated_at: <%= Time.zone.now %>
   user: trend
 
-<% 20.times do |n| %>
+<% 10.times do |n| %>
 article_<%= n %>:
   title: <%= Faker::Lorem.sentence %>
   description: <%= Faker::Lorem.paragraph(2) %>

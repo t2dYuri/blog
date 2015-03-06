@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   default_scope -> { order(updated_at: :desc) }
   validates :user_id,     presence: true
   validates :text,        presence: true
-  validates :title,       presence: true, length: { maximum: 100 }
+  validates :title,       presence: true, length: { maximum: 80 }
   validates :description, presence: true, length: { maximum: 500 }
 
   scope :next,     lambda { |updated_at| where('updated_at > ?', updated_at).reorder('updated_at asc') }

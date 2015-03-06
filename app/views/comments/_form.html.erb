@@ -1,8 +1,10 @@
 <% if logged_in? %>
   <div id="comm_form">
     <%= form_for([@article, @article.comments.build], remote: true) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.hidden_field :commenter, :value => current_user.name %>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:h4, message, class: "alert center alert-#{message_type}") %>
+    <% end %>
+      <%#= f.hidden_field :commenter, :value => current_user.name %>
       <%= f.text_area :body, class: 'form-control', rows: 6, 'placeholder' => 'Ваш комментарий (максимум 500 символов)' %>
       <%= f.submit 'сохранить комментарий', class: 'btn btn-main' %>
     <% end %>

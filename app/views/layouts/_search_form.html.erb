@@ -1,10 +1,10 @@
 <div class="modal fade search-mod" tabindex="-1" role="dialog" aria-labelledby="ArticleSearch" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <%= form_tag articles_path, class: 'modal-content', method: :get do %>
+    <%= form_tag articles_path, class: 'search-form', method: :get do %>
       <div class="input-group">
         <%= text_field_tag :query, params[:query], class: 'form-control', 'placeholder' => 'Введите текст для поиска ...' %>
         <span class="input-group-btn">
-          <%= submit_tag 'Искать', name: nil, class: 'btn btn-default' %>
+          <%= submit_tag 'Искать', name: 'search', class: 'btn btn-default' %>
         </span>
       </div>
     <% end %>

@@ -3,12 +3,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <%= link_to current_user, class: 'del-but close' do %>
+        <%#= link_to current_user, class: 'del-but close' do %>
+        <%= link_to root_path, class: 'del-but close' do %>
           <i class="glyphicon glyphicon-remove" title="Закрыть окно"></i>
         <% end %>
         <h4 class="modal-title center" id="geg-login-modLabel">Новый пароль</h4>
       </div>
       <div class="modal-body">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:h4, message, class: "alert center alert-#{message_type}") %>
+        <% end %>
         <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
 

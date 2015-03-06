@@ -11,7 +11,9 @@ class ArticlesControllerTest < ActionController::TestCase
   test 'should redirect from creating article when not logged in' do
     get :new
     assert_no_difference 'Article.count' do
-      post :create, article: { title: 'Article title', description: 'Article Description', text: 'Article Text' }
+      post :create, article: { title: 'Article title',
+                               description: 'Article Description',
+                               text: 'Article Text' }
     end
     assert_redirected_to login_url
     assert_not flash.empty?

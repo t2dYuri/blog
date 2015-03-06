@@ -3,7 +3,7 @@
     <div class="alert alert-danger center">
       The form contains <%= pluralize(object.errors.count, 'error') %>.
     </div>
-    <ul>
+    <ul id="errors-list">
       <% object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>

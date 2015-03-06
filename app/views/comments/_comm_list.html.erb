@@ -1,17 +1,17 @@
-<%= render html: '<center>Пока что никто не комментировал эту статью</center>'.html_safe unless @comments.count > 0 %>
+<%= render html: '<span id="no-comm"><center>Пока что никто не комментировал эту статью</center></span>'.html_safe unless @comments.present? %>
 <% @comments.each do |comment| %>
   <ul class="list-unstyled">
     <% zebra = cycle('#FFFFFF', '#EEEEEE') %>
     <li class="li-zebra" style="background: <%= zebra %>">
-      <em><small><%= comment.created_at.strftime '%d-%m-%Y в %H:%M' %></small></em>
-      <% if current_user.try(:admin?) || current_user.try(:name) == comment.commenter %>
+      <span id="comm-date"><em><small><%= comment.created_at.strftime '%d-%m-%Y в %H:%M' %></small></em></span>
+      <% if current_user.try(:admin?) || current_user == comment.user %>
         <%= link_to article_comment_path(comment.article.id,comment.id), method: :delete, data: {confirm: 'Серьезно?'}, class: 'del-but pull-right' do %>
           <i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Удалить комментарий"></i>
         <% end %>
       <% end %>
       <br>
-      <strong><%= comment.commenter %>:</strong>
-      <%= comment.body %>
+      <span id="comm-username"><strong><%= comment.user.name %></strong></span><strong>: </strong>
+      <span id="comm-body"><%= comment.body %></span>
     </li>
   </ul>
 <% end %>

@@ -9,10 +9,10 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = User.find(params[:id])
-      @articles = @user.articles.page(params[:articles_page]).per_page(10)
-      @followers = @user.followers.page(params[:followers_page]).per_page(10)
-      @following = @user.following.page(params[:following_page]).per_page(10)
+    @user = User.find(params[:id])
+    @articles = @user.articles.page(params[:articles_page]).per_page(10)
+    @followers = @user.followers.page(params[:followers_page]).per_page(10)
+    @following = @user.following.page(params[:following_page]).per_page(10)
   end
 
   def new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = 'Пожалуйста, проверьте Ваш email для активации учетной записи. Может занять до 30 минут (иногда больше, но обычно меньше :)'
+      flash[:info] = 'Проверьте Ваш email для активации учетной записи. Доставка письма может занять некоторое время'
       redirect_to root_url
     else
       render 'new'
@@ -45,15 +45,31 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = 'Пользователь удален'
-    redirect_to users_url
+    @user = User.find(params[:id])
+    if @user.admin?
+      redirect_to root_url
+    else
+      @user.destroy
+      flash[:success] = 'Пользователь удален'
+      redirect_to users_url
+    end
   end
 
   private
 
+  # def user_params
+  #   if current_user && current_user.admin?
+  #     params.require(:user).permit(:name, :email, :password, :password_confirmation,
+  #                                  :about_me, :birth_date, :avatar, :avatar_cache, :remote_avatar_url, :remove_avatar)
+  #   else
+  #     params.require(:user).permit(:name, :password, :password_confirmation,
+  #                                  :about_me, :birth_date, :avatar, :avatar_cache, :remote_avatar_url, :remove_avatar)
+  #   end
+  # end
+
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :birth_date, :avatar, :avatar_cache, :remove_avatar, :remote_avatar_url)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                 :about_me, :birth_date, :avatar, :avatar_cache, :remove_avatar, :remote_avatar_url)
   end
 
   # Before filters

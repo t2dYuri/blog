@@ -1,11 +1,65 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+comm1:
+  user: trend
+  body: First comment, Comment body example text
+  article: art2
+  created_at: <%= 9.minutes.ago %>
 
-#one:
-#  commenter: MyString
-#  body: MyText
-#  article_id:
-#
-#two:
-#  commenter: MyString
-#  body: MyText
-#  article_id:
+comm2:
+  user: second
+  body: Second comment, Comment body example text
+  article: art2
+  created_at: <%= 8.minutes.ago %>
+
+comm3:
+  user: third
+  body: Third comment, Comment body example text
+  article: art2
+  created_at: <%= 7.minutes.ago %>
+
+comm4:
+  user: fourth
+  body: Fourth comment, Comment body example text
+  article: art2
+  created_at: <%= 6.minutes.ago %>
+
+comm5:
+  user: admin
+  body: Fifth comment, Comment body example text
+  article: art2
+  created_at: <%= 5.minutes.ago %>
+
+comm6:
+  user: trend
+  body: Sixth comment, Comment body example text
+  article: art2
+  created_at: <%= 4.minutes.ago %>
+
+comm7:
+  user: admin
+  body: Seventh comment, Comment body example text
+  article: art2
+  created_at: <%= 3.minutes.ago %>
+
+comm8:
+  user: fourth
+  body: Eighth comment, Comment body example text
+  article: art2
+  created_at: <%= 2.minutes.ago %>
+
+comm9:
+  user: third
+  body: Nineth comment, Comment body example text
+  article: art2
+  created_at: <%= 1.minutes.ago %>
+
+comm10:
+  user: second
+  body: Tenth comment, Comment body example text
+  article: art2
+  created_at: <%= 30.seconds.ago %>
+
+comm11:
+  user: trend
+  body: Eleventh comment, Comment body example text
+  article: art2
+  created_at: <%= Time.zone.now %>

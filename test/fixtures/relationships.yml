@@ -1,9 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  follower: trend
+  followed: third
 
-#one:
-#  follower_id: 1
-#  followed_id: 1
-#
-#two:
-#  follower_id: 1
-#  followed_id: 1
+two:
+  follower: trend
+  followed: fourth
+
+three:
+  follower: third
+  followed: trend
+
+four:
+  follower: second
+  followed: trend

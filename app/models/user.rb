@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
+
   # default_scope -> { order(created_at: :desc) }
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save   :downcase_email, :nil_if_blank
@@ -17,9 +18,8 @@ class User < ActiveRecord::Base
   has_secure_password
   # validates :password, length: { minimum: 6 }, if: :password
   validates :password, length: { minimum: 6 }, allow_blank: true
-
-  validate  :avatar_size
   validates :about_me, length: { maximum: 200 }
+  validate  :avatar_size
 
   mount_uploader :avatar, AvatarUploader
 

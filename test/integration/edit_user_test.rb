@@ -8,33 +8,69 @@ class EditUserTest < ActionDispatch::IntegrationTest
   test 'edit user form view' do
     log_in_as(@user)
     get edit_user_path(@user)
+    assert_response :success
     assert_template 'users/edit'
     assert_select 'a.close[href=?]', user_path(@user)
+    assert_select 'h4.modal-title', /.+#{@user.name}/
     assert_select 'form.edit_user' do
-      assert_select "label[for='user_name']"
-      assert_select "input[type=text][value='#{@user.name}'][name='user[name]']"
-      assert_select "label[for='user_email']"
-      assert_select "input[type=email][value='#{@user.email}'][name='user[email]']"
-      assert_select "input[type=password][name='user[password]']"
-      assert_select "input[type=password][name='user[password_confirmation]']"
-      assert_select "img.avatar[src='/assets/default.jpg'][alt='Default']"
-      assert_select "input.file-upload[type=text][accept='image/jpeg,image/gif,image/png'][name='user[remote_avatar_url]']"
-      assert_select "input[type=file][accept='image/jpeg,image/gif,image/png'][name='user[avatar]']"
-      assert_select "input[type=hidden][name='user[avatar_cache]']"
-      assert_select "input[type=checkbox][name='user[remove_avatar]']"
-      assert_select "input[type=text][name='user[about_me]']"
-      assert_select "input[type=date][name='user[birth_date]']"
-      assert_select "input[type=submit][name='commit']"
+      assert_select 'label[for=?]', 'user_name', 1
+      assert_select 'label[for=?]', 'user_email', 1
+      assert_select 'label[for=?]', 'user_password', 1
+      assert_select 'label[for=?]', 'user_password_confirmation', 1
+      assert_select 'input[type=text][name=?][value=?]', 'user[name]', "#{@user.name}", 1
+      assert_select 'input[type=email][name=?][value=?]', 'user[email]', "#{@user.email}", 1
+      assert_select 'input[type=password][name=?]', 'user[password]', 1
+      assert_select 'input[type=password][name=?]', 'user[password_confirmation]', 1
+      assert_select 'img.avatar[src=?]', '/assets/default.jpg', 1
+      assert_select 'input.file-upload[type=text][accept=?][name=?]', 'image/jpeg,image/gif,image/png', 'user[remote_avatar_url]', 1
+      assert_select 'input[type=file][accept=?][name=?]', 'image/jpeg,image/gif,image/png', 'user[avatar]', 1
+      assert_select 'input[type=hidden][name=?]', 'user[avatar_cache]', 1
+      assert_select 'input[type=checkbox][name=?]', 'user[remove_avatar]', 1
+      assert_select 'input[type=text][name=?]', 'user[about_me]', 1
+      assert_select 'input[type=date][name=?]', 'user[birth_date]', 1
+      assert_select 'input[type=submit][name=?]', 'commit', 1
     end
   end
 
-  test 'invalid data in edit form' do
+  test 'invalid data in edit user form' do
     log_in_as(@user)
     get edit_user_path(@user)
-    patch user_path(@user), user: {name: '', email: 'mail@invalid', password: 'foo', password_confirmation: 'bar'}
+
+    # bad name
+    patch user_path(@user), user: { name: '' }
     assert_template 'users/edit'
-    assert_select 'div.field_with_errors'
-    assert_select 'div.alert'
+    assert_select 'div#error_explanation' do
+      assert_select 'div.alert'
+    end
+    assert_select 'div.field_with_errors' do
+      assert_select 'input[type=text][name=?][value=?]', 'user[name]', ''
+    end
+
+    # corrected name, bad email
+    patch user_path(@user), user: { name: 'Good Name',
+                                    email: 'bad@email' }
+    assert_select 'h4.modal-title', /.+Good Name/
+    assert_select 'div.field_with_errors' do
+      assert_select 'input[type=email][name=?][value=?]', 'user[email]', 'bad@email'
+    end
+
+    # corrected email, short password
+    patch user_path(@user), user: { email: 'good@email.com',
+                                    password: 'foo',
+                                    password_confirmation: 'foo' }
+    assert_select 'div.field_with_errors' do
+      assert_select 'input[type=password][name=?]', 'user[password]'
+    end
+
+    # corrected password, bad password_confirmation
+    patch user_path(@user), user: { password: 'foobsr',
+                                    password_confirmation: 'FOOBAR' }
+    assert_select 'div.field_with_errors' do
+      assert_select 'input[type=password][name=?]', 'user[password_confirmation]'
+    end
+    get user_path(@user)
+    assert_not_equal @user.name, 'Good Name'
+    assert_not_equal @user.email, 'good@email.com'
   end
 
   test 'successful edit user with secondary params and friendly forwarding' do
@@ -45,7 +81,7 @@ class EditUserTest < ActionDispatch::IntegrationTest
     email = 'mail@edit.com'
     about_me = 'edit about me'
     birth_date = '24.03.1981'
-    patch user_path(@user), user: {name: name, email: email, about_me: about_me, birth_date: birth_date, password: 'f00baR', password_confirmation: 'f00baR'}
+    patch user_path(@user), user: {name: name, email: email, about_me: about_me, birth_date: birth_date}
     assert_not flash.empty?
     assert_redirected_to @user
     @user.reload

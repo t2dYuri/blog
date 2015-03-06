@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+
   def setup
-    @user = User.new(name: 'Example User', email: 'user@example.com', password: 'foobar', password_confirmation: 'foobar')
+    @user = User.new(name: 'Example User',
+                     email: 'user@example.com',
+                     password: 'foobar',
+                     password_confirmation: 'foobar')
   end
 
   test 'should be valid' do
@@ -64,15 +68,57 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test 'about_me should not be too long' do
+    @user.about_me = 'a' * 201
+    assert_not @user.valid?
+  end
+
   test 'authenticated? should be false without digest' do
     assert_not @user.authenticated?(:remember, '')
   end
 
-  test "deleating user must destroy user's articles" do
+  test "deleting user must destroy user's articles" do
     @user.save
     @user.articles.create!(title: 'Lorem ipsun', description: 'Lorem ipsum', text: 'Lorem ipsum')
     assert_difference 'Article.count', -1 do
       @user.destroy
+    end
+  end
+
+  test "deleting user must destroy user's comments" do
+    @user.save
+    @user.comments.create!(body: 'Example comment')
+    assert_difference 'Comment.count', -1 do
+      @user.destroy
+    end
+  end
+
+  test 'user should follow and unfollow another user' do
+    user1 = users(:trend)
+    user2  = users(:second)
+    assert_not user1.following?(user2)
+    user1.follow(user2)
+    assert user1.following?(user2)
+    assert user2.followers.include?(user1)
+    user1.unfollow(user2)
+    assert_not user1.following?(user2)
+  end
+
+  test 'feed should include only articles from self and following users' do
+    trend = users(:trend)
+    second = users(:second)
+    third = users(:third)
+    # Articles from followed user
+    third.articles.each do |article_following|
+      assert trend.feed.include?(article_following)
+    end
+    # Articles from self
+    trend.articles.each do |article_self|
+      assert trend.feed.include?(article_self)
+    end
+    # Articles from unfollowed user
+    second.articles.each do |article_unfollowed|
+      assert_not trend.feed.include?(article_unfollowed)
     end
   end
 end
