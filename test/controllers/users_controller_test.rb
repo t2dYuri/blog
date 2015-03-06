@@ -60,15 +60,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_url
   end
 
-  test 'should destroy user when admin' do
-    log_in_as(@admin)
-    assert_difference 'User.count', -1 do
-      delete :destroy, id: @user
-    end
-    assert_redirected_to users_url
-    assert_not flash.empty?
-  end
-
   test 'should not allow to destroy user itself' do
     log_in_as(@user)
     assert_no_difference 'User.count' do
@@ -85,12 +76,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_url
   end
 
+  test 'should destroy user when admin' do
+    log_in_as(@admin)
+    assert_difference 'User.count', -1 do
+      delete :destroy, id: @user
+    end
+    assert_redirected_to users_url
+    assert_not flash.empty?
+  end
+
   test 'should not allow to appoint admin attribute' do
     log_in_as(@user)
     assert_not @user.admin?
-    patch :update, id: @user, user: {password: 'foobar',
-                                     password_confirmation: 'foobar',
-                                     admin: true}
+    patch :update, id: @user, user: {password: 'foobar', password_confirmation: 'foobar', admin: true}
     assert_not @user.reload.admin?
   end
 end

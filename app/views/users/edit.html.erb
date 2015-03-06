@@ -15,8 +15,10 @@
           <%= f.label :name, 'Ваше новое имя' %>
           <%= f.text_field :name, class: 'form-control' %>
 
-          <%= f.label :email, 'Новый адрес Вашей электронной почты' %>
-          <%= f.email_field :email, class: 'form-control' %>
+          <% if current_user.admin? %>
+            <%= f.label :email, 'Новый адрес электронной почты' %>
+            <%= f.email_field :email, class: 'form-control' %>
+          <% end %>
 
           <%= f.label :password, 'Изменить пароль' %>
           <%= f.password_field :password, class: 'form-control', 'placeholder' => 'новый пароль' %>

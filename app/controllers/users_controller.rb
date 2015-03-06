@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(initial_user_params)
     if @user.save
       @user.send_activation_email
       flash[:info] = 'Проверьте Ваш email для активации учетной записи. Доставка письма может занять некоторое время'
@@ -57,19 +57,18 @@ class UsersController < ApplicationController
 
   private
 
-  # def user_params
-  #   if current_user && current_user.admin?
-  #     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-  #                                  :about_me, :birth_date, :avatar, :avatar_cache, :remote_avatar_url, :remove_avatar)
-  #   else
-  #     params.require(:user).permit(:name, :password, :password_confirmation,
-  #                                  :about_me, :birth_date, :avatar, :avatar_cache, :remote_avatar_url, :remove_avatar)
-  #   end
-  # end
+  def initial_user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,
-                                 :about_me, :birth_date, :avatar, :avatar_cache, :remove_avatar, :remote_avatar_url)
+    if current_user && current_user.admin?
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                   :about_me, :birth_date, :avatar, :avatar_cache, :remote_avatar_url, :remove_avatar)
+    else
+      params.require(:user).permit(:name, :password, :password_confirmation,
+                                   :about_me, :birth_date, :avatar, :avatar_cache, :remote_avatar_url, :remove_avatar)
+    end
   end
 
   # Before filters
