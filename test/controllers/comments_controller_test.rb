@@ -8,6 +8,13 @@ class CommentsControllerTest < ActionController::TestCase
     @comment = comments(:comm10)
   end
 
+  test 'comments routes' do
+    assert_routing({ path: 'articles/1/comments', method: :post },
+                   { controller: 'comments', action: 'create', article_id: '1' })
+    assert_routing({ path: 'articles/1/comments/2', method: :delete },
+                   { controller: 'comments', action: 'destroy', article_id: '1', id: '2' })
+  end
+
   test 'should redirect from creating comment when not logged in' do
     assert_no_difference 'Comment.count' do
       post :create, article_id: @article, comment: { body: 'Example comment' }

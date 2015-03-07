@@ -8,6 +8,27 @@ class ArticlesControllerTest < ActionController::TestCase
     @second_user_article = articles(:second_art1)
   end
 
+  test 'articles routes' do
+    # articles index if search query = nil
+    assert_routing({ path: '/articles', method: :get },
+                   { controller: 'articles', action: 'index' })
+    # articles index if search query not nil
+    assert_routing({ path: '/articles', method: :get },
+                   { controller: 'articles', action: 'index', query: '123' }, {}, { query: '123' })
+    assert_routing({ path: 'articles/1', method: :get },
+                   { controller: 'articles', action: 'show', id: '1' })
+    assert_routing({ path: 'articles/new', method: :get },
+                   { controller: 'articles', action: 'new' })
+    assert_routing({ path: '/articles', method: :post },
+                   { controller: 'articles', action: 'create' })
+    assert_routing({ path: 'articles/1/edit', method: :get },
+                   { controller: 'articles', action: 'edit', id: '1' })
+    assert_routing({ path: 'articles/1', method: :patch },
+                   { controller: 'articles', action: 'update', id: '1' })
+    assert_routing({ path: 'articles/1', method: :delete },
+                   { controller: 'articles', action: 'destroy', id: '1' })
+  end
+
   test 'should redirect from creating article when not logged in' do
     get :new
     assert_no_difference 'Article.count' do

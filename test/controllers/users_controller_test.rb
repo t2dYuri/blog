@@ -7,6 +7,23 @@ class UsersControllerTest < ActionController::TestCase
     @admin = users(:admin)
   end
 
+  test 'users routes' do
+    assert_routing({ path: '/users', method: :get },
+                   { controller: 'users', action: 'index' })
+    assert_routing({ path: 'users/1', method: :get },
+                   { controller: 'users', action: 'show', id: '1' })
+    assert_routing({ path: '/signup', method: :get },
+                   { controller: 'users', action: 'new' })
+    assert_routing({ path: '/users', method: :post },
+                   { controller: 'users', action: 'create' })
+    assert_routing({ path: 'users/1/edit', method: :get },
+                   { controller: 'users', action: 'edit', id: '1' })
+    assert_routing({ path: 'users/1', method: :patch },
+                   { controller: 'users', action: 'update', id: '1' })
+    assert_routing({ path: 'users/1', method: :delete },
+                   { controller: 'users', action: 'destroy', id: '1' })
+  end
+
   test 'should get new' do
     get :new
     assert_response :success

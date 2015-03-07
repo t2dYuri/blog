@@ -20,7 +20,7 @@
 <script>
   tinyMCE.init({
     selector: "textarea.tinymce",
-    toolbar: ["styleselect | bold italic | alignleft aligncenter alignright alignjustify | forecolor backcolor | fontsizeselect | removeformat | code"],
+    toolbar: ["styleselect | bold italic | alignleft aligncenter alignright alignjustify | forecolor backcolor | fontsizeselect | link unlink | removeformat code"],
     plugins: "image,link,table,charmap,textcolor,hr,code,preview",
     menu : {
       edit: {title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall'},
@@ -29,14 +29,14 @@
       tools: {title: 'Tools', items: 'preview code visualaid'}
     },
     style_formats: [
-      {title: "Headers", items: [
-        {title: "Header 1", format: "h1"},
-        {title: "Header 2", format: "h2"},
-        {title: "Header 3", format: "h3"},
-        {title: "Header 4", format: "h4"},
-        {title: "Header 5", format: "h5"},
-        {title: "Header 6", format: "h6"}
-      ]},
+//      {title: "Headers", items: [
+//        {title: "Header 1", format: "h1"},
+//        {title: "Header 2", format: "h2"},
+//        {title: "Header 3", format: "h3"},
+//        {title: "Header 4", format: "h4"},
+//        {title: "Header 5", format: "h5"},
+//        {title: "Header 6", format: "h6"}
+//      ]},
       {title: "Inline", items: [
         {title: "Bold", icon: "bold", format: "bold"},
         {title: "Italic", icon: "italic", format: "italic"},
