@@ -7,7 +7,8 @@
         </a>
       </h4>
     </div>
-    <div id="collapseFollowers" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFollowers">
+    <!--class="panel-collapse collapse in" - opened by default-->
+    <div id="collapseFollowers" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFollowers">
       <div class="panel-body">
         <% if @followers.any? %>
           <ul id="followers-curr" class="list-unstyled">

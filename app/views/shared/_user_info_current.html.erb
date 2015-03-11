@@ -7,7 +7,10 @@
         <i class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="Редактировать профиль"></i>
       <% end %>
     </h3>
-    <div class="center">Материалов: <strong><%= current_user.articles.count %></strong></div>
+    <div class="center">
+      Материалов: <strong><%= current_user.articles.count %></strong>,
+      Комментариевв: <strong><%= current_user.comments.count %></strong>
+    </div>
   </div>
   <div class="panel-body">
       <%= link_to 'Написать статью', new_article_path, class: 'btn-main btn-profile pull-right', 'data-no-turbolink' => true %>

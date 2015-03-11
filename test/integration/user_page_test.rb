@@ -9,7 +9,7 @@ class UserPageTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
   end
 
-  test "user's page template" do
+  test 'user page template' do
     log_in_as(@user)
     get user_path(@user)
     assert_response :success
@@ -25,7 +25,7 @@ class UserPageTest < ActionDispatch::IntegrationTest
     assert_template partial: 'shared/_followers_other'
   end
 
-  test "user's page for current user" do
+  test 'user page for current user' do
     log_in_as(@user)
     get user_path(@user)
     # user's info section
@@ -33,6 +33,7 @@ class UserPageTest < ActionDispatch::IntegrationTest
     assert_select 'h3>img.avatar'
     assert_match /default.jpg/i, response.body
     assert_match @user.articles.count.to_s, response.body
+    assert_match @user.comments.count.to_s, response.body
     assert_select 'a.edit-but[href=?]', edit_user_path(@user), 1
     assert_select 'a.btn-main[href=?]', new_article_path, 1
     # user's articles section
@@ -48,7 +49,7 @@ class UserPageTest < ActionDispatch::IntegrationTest
     assert_select 'div.paginator'
   end
 
-  test "user's page for other users, only differences" do
+  test 'user page for other users, only differences' do
     log_in_as(@second_user)
     get user_path(@user)
     assert_select 'a.edit-but[href=?]', edit_user_path(@user), 0
@@ -88,7 +89,7 @@ class UserPageTest < ActionDispatch::IntegrationTest
     assert_match /followers/i, response.body
   end
 
-  test "user's page for admin, only differences" do
+  test 'user page for admin, only differences' do
     log_in_as(@admin)
     get user_path(@user)
     assert_select 'a.edit-but[href=?]', edit_user_path(@user), 1
